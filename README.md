@@ -189,17 +189,17 @@ Example persona structure:
 
 **Team OrientAI**
 
-| Name | Role |
-|---|---|
-| Team Member 1 | Product Owner & Data Designer |
-| Team Member 2 | AI & Model Integration Developer |
-| Team Member 3 | Backend Developer |
-| Team Member 4 | Database & RAG Developer |
-| Team Member 5 | Frontend & UI Developer |
+## Team & Role Distribution
 
-> Team member names will be added later.
+| Team Member | Role | Coding Responsibilities |
+|---|---|---|
+| Senanur ŞENOL | Scrum Master & Data/Prompt Developer | Jira board management, sprint tracking, synthetic patient personas, prompt templates, test scenarios, hallucination test cases, demo data and documentation |
+| Eralp DUMAN | AI & Model Integration Developer | Whisper STT, TTS, Vision API/LLaVA integration, model service layer, AI pipeline design and model inference testing |
+| Emrullah BOZKURT | Backend Developer | FastAPI architecture, API routes, request/response schemas, service orchestration, backend configuration and API reliability |
+| Gamze AKEMOĞLU | Database & RAG Developer | SQL schema, ChromaDB vector store, persona indexing, RAG retriever, interaction log management and data consistency |
+| Elif Sıla DEMİRELİ | Frontend & UI Developer | Streamlit patient interaction screen, caregiver dashboard, reminder UI, sentiment charts, log tables and user experience design |
 
----
+Although each member has a primary role, all team members contribute code through their assigned modules. The project is divided into modular components to ensure balanced technical contribution across the team.
 
 ## 📋 Product Backlog
 
