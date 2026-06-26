@@ -12,9 +12,9 @@
 
 <div align="center">
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python)
-![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?style=for-the-badge&logo=fastapi)
-![Streamlit](https://img.shields.io/badge/Streamlit-Frontend-FF4B4B?style=for-the-badge&logo=streamlit)
+![React](https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Python](https://img.shields.io/badge/Python-AI%20Services-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![ChromaDB](https://img.shields.io/badge/ChromaDB-RAG-purple?style=for-the-badge)
 ![Whisper](https://img.shields.io/badge/Whisper-STT-black?style=for-the-badge)
 ![Jira](https://img.shields.io/badge/Jira-Scrum-0052CC?style=for-the-badge&logo=jira)
@@ -98,30 +98,29 @@ The assistant can:
 ## 🧱 System Architecture
 
 ```text
-Patient Voice / Text / Image Input
-              |
-              v
-        FastAPI Backend
-              |
-   --------------------------------
-   |              |               |
- STT Service   Vision Service   RAG Service
- Whisper       LLaVA / API      ChromaDB
-   |              |               |
-   --------------------------------
-              |
-              v
-          LLM Response
-              |
-        ---------------
-        |             |
-      TTS       Interaction Logs
-        |             |
-        v             v
- Patient Output  Caregiver Dashboard
+React Frontend
+     |
+     v
+Node.js Backend API
+     |
+     v
+Python AI Services
+     |
+     |------------------|------------------|------------------|
+     v                  v                  v                  v
+ Whisper STT        TTS Service       Vision Service       RAG Service
+ Audio -> Text      Text -> Audio     Image Analysis       ChromaDB
+     |                  |                  |                  |
+     |------------------|------------------|------------------|
+                            |
+                            v
+                   Personalized AI Response
+                            |
+          --------------------------------------
+          |                                    |
+          v                                    v
+   Patient Interaction UI             Caregiver Dashboard
 ```
-
-> A detailed architecture diagram will be added as the project evolves.
 
 ---
 
@@ -129,8 +128,9 @@ Patient Voice / Text / Image Input
 
 | Layer | Technologies |
 |---|---|
-| Backend | Python, FastAPI |
-| Frontend | Streamlit |
+| Frontend | React, Vite |
+| Backend API | Node.js, Express.js |
+| AI Services | Python |
 | Speech-to-Text | Whisper |
 | Text-to-Speech | TTS Services |
 | Multimodal AI | LLaVA / Vision API |
@@ -145,16 +145,7 @@ Patient Voice / Text / Image Input
 
 Due to privacy and ethical concerns, OrientAI does not use real patient data during development.
 
-Instead, the system uses fully synthetic personas that include:
-
-- Patient metadata
-- Daily routines
-- Medication reminders
-- Core memories
-- Family-related information
-- Simulated conversation patterns
-
-Example persona structure:
+Instead, the system uses fully synthetic personas that include patient metadata, daily routines, medication reminders, core memories, family-related information, and simulated conversation patterns.
 
 ```json
 {
@@ -194,12 +185,14 @@ Example persona structure:
 | Team Member | Role | Coding Responsibilities |
 |---|---|---|
 | Senanur ŞENOL | Scrum Master & Data/Prompt Developer | Jira board management, sprint tracking, synthetic patient personas, prompt templates, test scenarios, hallucination test cases, demo data and documentation |
-| Eralp DUMAN | AI & Model Integration Developer | Whisper STT, TTS, Vision API/LLaVA integration, model service layer, AI pipeline design and model inference testing |
-| Emrullah BOZKURT | Backend Developer | FastAPI architecture, API routes, request/response schemas, service orchestration, backend configuration and API reliability |
+| Eralp DUMAN | AI & Model Integration Developer | Python AI services, Whisper STT, TTS, Vision API/LLaVA integration, model service layer, AI pipeline design and model inference testing |
+| Emrullah BOZKURT | Backend Developer | Node.js backend architecture, API routes, request/response schemas, service orchestration, backend configuration and API reliability |
 | Gamze AKEMOĞLU | Database & RAG Developer | SQL schema, ChromaDB vector store, persona indexing, RAG retriever, interaction log management and data consistency |
-| Elif Sıla DEMİRELİ | Frontend & UI Developer | Streamlit patient interaction screen, caregiver dashboard, reminder UI, sentiment charts, log tables and user experience design |
+| Elif Sıla DEMİRELİ | Frontend & UI Developer | React patient interaction screen, caregiver dashboard, reminder UI, sentiment charts, log tables and user experience design |
 
 Although each member has a primary role, all team members contribute code through their assigned modules. The project is divided into modular components to ensure balanced technical contribution across the team.
+
+---
 
 ## 📋 Product Backlog
 
@@ -223,26 +216,28 @@ The project is planned as a **6-week Agile/Scrum development process** consistin
 
 ## Sprint Goal
 
-The goal of Sprint 1 is to establish the core project structure, FastAPI backend skeleton, database schema, synthetic patient persona structure, and initial ChromaDB-based RAG infrastructure.
+The goal of Sprint 1 is to establish the core project structure, Node.js backend skeleton, Python AI service skeleton, database schema, React frontend skeleton, synthetic patient persona structure, and initial ChromaDB-based RAG infrastructure.
 
 ## Sprint Backlog
 
 | Task | Status |
 |---|---|
 | Project folder structure setup | To Do |
-| FastAPI backend skeleton setup | To Do |
+| Node.js backend skeleton setup | To Do |
 | Health check endpoint implementation | To Do |
 | Database schema design | To Do |
 | User, patient, routine and log tables | To Do |
 | Synthetic patient persona JSON schema | To Do |
 | Sample synthetic patient profiles | To Do |
-| ChromaDB vector database setup | To Do |
 | Persona indexing into vector database | To Do |
 | Initial README documentation | To Do |
-| Requirements and .gitignore setup | To Do |
-| Backend environment configuration | To Do |
+| Package, requirements and .gitignore setup | To Do |
+| Node.js backend and Python AI services environment configuration | To Do |
 | Sprint 1 board screenshots | To Do |
 | Sprint 1 review and retrospective notes | To Do |
+| ChromaDB vector database setup | To Do |
+| Python AI service skeleton setup | To Do |
+| React frontend skeleton setup | To Do |
 
 ## Sprint Board
 
@@ -262,7 +257,7 @@ To be completed at the end of Sprint 1.
 
 ## Sprint Goal
 
-The goal of Sprint 2 is to develop the voice interaction layer, RAG-supported memory retrieval, LLM prompting structure, speech-to-text, text-to-speech, and sentiment analysis modules.
+The goal of Sprint 2 is to develop the voice interaction layer, RAG-supported memory retrieval, LLM prompting structure, speech-to-text, text-to-speech, sentiment analysis modules, Node.js chat endpoints, and initial React patient chat interface.
 
 ## Sprint Backlog
 
@@ -280,6 +275,7 @@ The goal of Sprint 2 is to develop the voice interaction layer, RAG-supported me
 | Flagging anxious or negative conversations | To Do |
 | Sprint 2 demo screenshots | To Do |
 | Sprint 2 review and retrospective notes | To Do |
+| React patient chat screen and API connection draft | To Do |
 
 ## Sprint Board
 
@@ -299,7 +295,7 @@ To be completed at the end of Sprint 2.
 
 ## Sprint Goal
 
-The goal of Sprint 3 is to complete visual understanding, image-based memory therapy, caregiver dashboard, dual-agent simulation, hallucination testing, and final demo preparation.
+The goal of Sprint 3 is to complete visual understanding, image-based memory therapy, React caregiver dashboard, dual-agent simulation, hallucination testing, and final demo preparation.
 
 ## Sprint Backlog
 
@@ -309,17 +305,17 @@ The goal of Sprint 3 is to complete visual understanding, image-based memory the
 | Photo description module | To Do |
 | Image-based memory therapy flow | To Do |
 | Connecting visual analysis with RAG memory | To Do |
-| Streamlit caregiver dashboard | To Do |
-| Patient interaction screen simulation | To Do |
+| React caregiver dashboard | To Do |
+| React patient interaction screen | To Do |
 | Reminder management screen | To Do |
 | Sentiment charts on dashboard | To Do |
 | Conversation and routine logs on dashboard | To Do |
 | Dual-agent patient simulator | To Do |
-| Assistant agent evaluation flow | To Do |
 | Hallucination and safety testing | To Do |
 | Final demo scenario | To Do |
 | Sprint 3 product screenshots | To Do |
 | Sprint 3 review and retrospective notes | To Do |
+| Assistant agent evaluation flow | To Do |
 
 ## Sprint Board
 
