@@ -1,0 +1,160 @@
+{
+  "patient_id": "P-1004",
+  "metadata": {
+    "full_name": "Ayşe Arslan",
+    "age": 76,
+    "gender": "female",
+    "diagnosis": "Early Stage Alzheimer",
+    "disease_stage": "mild",
+    "former_profession": "Primary School Teacher",
+    "living_status": "Lives alone with scheduled caregiver visits",
+    "primary_caregiver": "Selin Arslan"
+  },
+  "orientation_support": {
+    "current_home": "Beşiktaş, Istanbul",
+    "safe_place_reminder": "You are at your own home and your caregiver checks on you regularly.",
+    "reassurance_message": "Ayşe Hanım, kendi evinizdesiniz ve güvendesiniz. Yeğeniniz Selin gün içinde sizi kontrol ediyor.",
+    "emergency_contact_name": "Selin Arslan",
+    "emergency_contact_relation": "Niece"
+  },
+  "daily_routines": [
+    {
+      "time": "07:30",
+      "activity": "Wake up and morning hygiene",
+      "description": "Starts the day by washing her face and preparing for breakfast.",
+      "reminder_type": "personal_care"
+    },
+    {
+      "time": "08:00",
+      "activity": "Breakfast",
+      "description": "Has a light breakfast in the kitchen.",
+      "reminder_type": "meal"
+    },
+    {
+      "time": "08:30",
+      "activity": "Morning medication",
+      "description": "Takes morning medication after breakfast.",
+      "reminder_type": "medication"
+    },
+    {
+      "time": "11:00",
+      "activity": "Plant care",
+      "description": "Waters the plants on the balcony.",
+      "reminder_type": "activity"
+    },
+    {
+      "time": "16:00",
+      "activity": "Caregiver visit",
+      "description": "Her niece Selin visits or calls to check on her.",
+      "reminder_type": "appointment"
+    },
+    {
+      "time": "22:00",
+      "activity": "Sleep preparation",
+      "description": "Prepares for sleep and checks that the door is locked.",
+      "reminder_type": "sleep"
+    }
+  ],
+  "medications": [
+    {
+      "name": "Morning medication",
+      "time": "08:30",
+      "dose": "1 tablet",
+      "note": "Taken after breakfast."
+    }
+  ],
+  "core_memories": [
+    {
+      "memory_id": "M-1004-FAMILY-01",
+      "category": "family",
+      "content": "Her niece is named Selin. Selin calls or visits her regularly and helps organize her daily needs.",
+      "keywords": ["niece", "Selin", "caregiver", "visit", "call"],
+      "emotional_tone": "calming"
+    },
+    {
+      "memory_id": "M-1004-WORK-01",
+      "category": "work",
+      "content": "She worked as a primary school teacher and loved teaching children how to read.",
+      "keywords": ["primary school teacher", "children", "reading", "work"],
+      "emotional_tone": "positive"
+    },
+    {
+      "memory_id": "M-1004-HOBBY-01",
+      "category": "hobby",
+      "content": "She enjoys taking care of balcony plants, especially geraniums and basil.",
+      "keywords": ["plants", "balcony", "geraniums", "basil", "hobby"],
+      "emotional_tone": "positive"
+    },
+    {
+      "memory_id": "M-1004-ROUTINE-01",
+      "category": "routine",
+      "content": "She usually waters her balcony plants around 11:00 in the morning.",
+      "keywords": ["plant care", "11:00", "morning", "routine"],
+      "emotional_tone": "neutral"
+    },
+    {
+      "memory_id": "M-1004-PLACE-01",
+      "category": "place",
+      "content": "She lives in Beşiktaş, Istanbul, in her own apartment.",
+      "keywords": ["home", "Beşiktaş", "Istanbul", "apartment"],
+      "emotional_tone": "calming"
+    },
+    {
+      "memory_id": "M-1004-VISUAL-01",
+      "category": "visual_memory",
+      "content": "Photos of classrooms, books and flowers often help her remember her teaching years and balcony routine.",
+      "keywords": ["classroom", "books", "flowers", "teaching", "balcony"],
+      "emotional_tone": "positive"
+    }
+  ],
+  "family_members": [
+    {
+      "name": "Selin Arslan",
+      "relation": "Niece",
+      "description": "Primary caregiver who regularly visits or calls her."
+    }
+  ],
+  "communication_preferences": {
+    "preferred_language": "Turkish",
+    "tone": "Gentle, clear and encouraging",
+    "answer_length": "short",
+    "avoid": [
+      "making her feel guilty",
+      "complex options",
+      "long explanations",
+      "uncertain personal information"
+    ]
+  },
+  "sample_questions": [
+    {
+      "question": "Ben evde miyim?",
+      "expected_answer_type": "orientation",
+      "expected_context_keywords": ["home", "Beşiktaş", "safe"]
+    },
+    {
+      "question": "Selin bugün gelecek mi?",
+      "expected_answer_type": "routine_reminder",
+      "expected_context_keywords": ["Selin", "16:00", "visit", "call"]
+    },
+    {
+      "question": "Ben öğretmen miydim?",
+      "expected_answer_type": "memory_recall",
+      "expected_context_keywords": ["primary school teacher", "children", "reading"]
+    },
+    {
+      "question": "Çiçekleri sulamam gerekiyor mu?",
+      "expected_answer_type": "routine_reminder",
+      "expected_context_keywords": ["plants", "11:00", "balcony"]
+    },
+    {
+      "question": "Kapıyı açık mı bıraktım?",
+      "expected_answer_type": "safety_fallback",
+      "expected_context_keywords": []
+    }
+  ],
+  "safety_notes": {
+    "medical_advice_policy": "The assistant must not provide medical diagnosis, medication changes or treatment advice.",
+    "hallucination_policy": "The assistant must not claim that the door is locked or unlocked unless this information is explicitly available.",
+    "emergency_policy": "If the user feels unsafe, lost or unable to contact anyone, the assistant should recommend contacting the caregiver or emergency services."
+  }
+}
