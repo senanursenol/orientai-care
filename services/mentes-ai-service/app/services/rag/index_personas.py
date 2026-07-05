@@ -3,12 +3,15 @@ import json
 import chromadb
 from sentence_transformers import SentenceTransformer
 
-DATA_FOLDER = "data"
+# Repo kökü: services/mentes-ai-service/app/services/rag/ -> 5 üst dizin
+REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", ".."))
+DATA_FOLDER = os.path.join(REPO_ROOT, "data", "synthetic_personas")
+VECTOR_STORE_PATH = os.path.join(REPO_ROOT, "vector-store")
 
 personas = []
 
 for file_name in os.listdir(DATA_FOLDER):
-    if file_name.endswith(".json"):
+    if file_name.endswith(".json") and file_name != "persona_schema.json":
 
         file_path = os.path.join(DATA_FOLDER, file_name)
 
@@ -67,7 +70,7 @@ print(f"Toplam embedding sayısı: {len(embeddings)}")
 print(f"Bir embedding boyutu: {len(embeddings[0])}")                    
 print("\nChromaDB oluşturuluyor...")
 
-client = chromadb.PersistentClient(path="chroma_db")
+client = chromadb.PersistentClient(path=VECTOR_STORE_PATH)
 collection = client.get_or_create_collection(
     name="patient_memories"
 )

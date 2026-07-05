@@ -1,0 +1,10 @@
+{
+  "name": "orientai-care",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "mentes-web-app",
+    "services/mentes-service",
+    "packages/modules/*"
+  ]
+}

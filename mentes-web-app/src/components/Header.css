@@ -1,0 +1,56 @@
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 2rem;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.app-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.app-header__icon {
+  font-size: 1.5rem;
+}
+
+.app-header__nav {
+  display: flex;
+  gap: 1.75rem;
+}
+
+.app-header__nav a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.app-header__nav a:hover {
+  color: var(--color-primary-dark);
+}
+
+.app-header__nav a.active {
+  color: var(--color-primary-dark);
+  border-bottom-color: var(--color-primary);
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+  .app-header__nav {
+    gap: 1.25rem;
+  }
+}
