@@ -1,0 +1,34 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Frontend: Chrome (mentes-web-app dev server)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/mentes-web-app/src",
+      "preLaunchTask": "Start Frontend Dev Server"
+    }
+
+    // Node.js servisi (services/mentes-service) henüz main.js içermiyor.
+    // Kod eklendiğinde buraya bir "node" tipi launch config eklenecek, örn:
+    // {
+    //   "name": "Backend: mentes-service (Node)",
+    //   "type": "node",
+    //   "request": "launch",
+    //   "program": "${workspaceFolder}/services/mentes-service/main.js",
+    //   "cwd": "${workspaceFolder}/services/mentes-service"
+    // }
+
+    // Python AI servisi (services/mentes-ai-service) henüz FastAPI giriş noktası içermiyor.
+    // Kod eklendiğinde buraya bir "debugpy" tipi launch config eklenecek, örn:
+    // {
+    //   "name": "AI Service: mentes-ai-service (FastAPI)",
+    //   "type": "debugpy",
+    //   "request": "launch",
+    //   "module": "uvicorn",
+    //   "args": ["app.main:app", "--reload"],
+    //   "cwd": "${workspaceFolder}/services/mentes-ai-service"
+    // }
+  ]
+}

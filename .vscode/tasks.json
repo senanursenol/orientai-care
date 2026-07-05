@@ -1,0 +1,31 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Frontend Dev Server",
+      "type": "npm",
+      "script": "dev",
+      "path": "mentes-web-app",
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "____never____"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "VITE",
+          "endsPattern": "ready in"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    }
+
+    // Node.js servisi (services/mentes-service) hazır olduğunda buraya
+    // "Start Backend (Node)" task'ı eklenecek: npm run dev, path: services/mentes-service
+    // Python AI servisi (services/mentes-ai-service) hazır olduğunda buraya
+    // "Start AI Service (FastAPI)" task'ı eklenecek: uvicorn app.main:app --reload
+  ]
+}
