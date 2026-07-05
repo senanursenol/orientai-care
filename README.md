@@ -196,7 +196,17 @@ Although each member has a primary role, all team members contribute code throug
 
 ## 📋 Product Backlog
 
+The product backlog was created and managed in Jira. It contains the main development tasks required to build OrientAI, including infrastructure setup, backend development, AI services, RAG integration, voice interaction, visual understanding, caregiver dashboard, testing and documentation.
+
 [Jira Product Backlog](https://senanursenol4.atlassian.net/jira/software/projects/ORI/boards/67/backlog)
+
+| Epic | Backlog Focus |
+|---|---|
+| E1 - Scrum, Documentation & Testing | Sprint planning, README documentation, review notes, retrospective notes, screenshots, simulation and testing documentation |
+| E2 - Node.js Backend API | Backend skeleton, health check endpoint, chat endpoints, voice chat endpoint and API orchestration |
+| E3 - Database & RAG | Database schema, user/patient/routine/log tables, ChromaDB setup, persona indexing and RAG retriever |
+| E4 - Python AI Services | Python AI service skeleton, Whisper STT, TTS, sentiment analysis, LLM/VLM integration and AI service layer |
+| E5 - React Frontend | React frontend skeleton, patient chat screen, caregiver dashboard, reminder UI, sentiment charts and log tables |
 
 ---
 
@@ -468,7 +478,7 @@ All patient profiles, memories, routines, and conversations are synthetically ge
 ## 📍 Project Status
 
 ```text
-Current Stage: Sprint Planning and Repository Setup
+Current Stage: Sprint 1 Completed — Sprint 2 Preparation
 ```
 
 ---
