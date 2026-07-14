@@ -1,5 +1,4 @@
-# 'services' klasörünün içindeki db_config'den çekiyoruz
-from services.db_config import chroma_collection
+from retriever_service import retrieve_context
 
 patient_id = input("Hasta ID (Örn: P-1001): ").strip()
 question = input("Sorunuzu girin: ").strip()
@@ -8,17 +7,10 @@ print("\nVeritabanında akıllı semantik arama yapılıyor...")
 
 # 2. En benzer belgeyi arıyoruz
 # Arka plandaki model soruyu otomatik olarak vektörleştiriyor.
-results = chroma_collection.query(
-    query_texts=[question],
-    n_results=2,
-    where={
-        "$and": [
-            {"patient_id": patient_id},
-            {"category": "family"}
-        ]
-    }
+results = retrieve_context(
+    question=question,
+    patient_id=patient_id,
 )
-
 print("\n Bulunan En Alakalı Sonuçlar:\n")
 
 # Eğer sonuç bulunamazsa kontrolü
