@@ -1,4 +1,4 @@
-from services.db_config import chroma_collection
+from db_config import chroma_collection
 
 def retrieve_context(question, patient_id, category=None, n_results=2):
     """

@@ -4,12 +4,13 @@ from chromadb.utils import embedding_functions
 from dotenv import load_dotenv
 
 
-current_dir = os.path.dirname(os.path.abspath(__file__))
-env_path = os.path.join(current_dir, "..", ".env")
+# services/mentes-ai-service/app/services/rag/ -> repo kökü (orientai-care/) 6 seviye yukarıda
+REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", "..", ".."))
+env_path = os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", ".env")
 load_dotenv(dotenv_path=env_path)
 
-# Veritabanı yolunu da ana dizine göre ayarlıyoruz
-DB_PATH = os.getenv("CHROMA_DB_PATH", "../chroma_db")
+# ChromaDB persist dizini repo kökündeki vector-store/ klasörüdür (bkz. TAKIM-KLASOR-REHBERI.md §4)
+DB_PATH = os.getenv("CHROMA_DB_PATH", os.path.join(REPO_ROOT, "vector-store"))
 COLLECTION_NAME = os.getenv("CHROMA_COLLECTION_NAME", "patient_memories")
 
 def init_chroma_db():

@@ -1,38 +1,25 @@
-import os
-import chromadb
-from sentence_transformers import SentenceTransformer
+from retriever_service import retrieve_context
 
-# Repo kökü: services/mentes-ai-service/app/services/rag/ -> 5 üst dizin
-REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", ".."))
-VECTOR_STORE_PATH = os.path.join(REPO_ROOT, "vector-store")
+patient_id = input("Hasta ID (Örn: P-1001): ").strip()
+question = input("Sorunuzu girin: ").strip()
 
-# Aynı embedding modelini yükle
-model = SentenceTransformer("all-MiniLM-L6-v2")
+print("\nVeritabanında akıllı semantik arama yapılıyor...")
 
-# ChromaDB'ye bağlan
-client = chromadb.PersistentClient(path=VECTOR_STORE_PATH)
-
-collection = client.get_collection("patient_memories")
-patient_id=input("Hasta ID:")
-# Kullanıcının sorusunu al
-question = input("Sorunuzu girin: ")
-
-# Soruyu embedding'e dönüştür
-question_embedding = model.encode(question)
-
-# En benzer belgeyi ara
-results = collection.query(
-    query_embeddings=[question_embedding.tolist()],
-    n_results=1,
-    where={"patient_id": patient_id}
+# 2. En benzer belgeyi arıyoruz
+# Arka plandaki model soruyu otomatik olarak vektörleştiriyor.
+results = retrieve_context(
+    question=question,
+    patient_id=patient_id,
 )
+print("\n Bulunan En Alakalı Sonuçlar:\n")
 
-print("\nSonuçlar:\n")
-
-for document, metadata in zip(
-    results["documents"][0],
-    results["metadatas"][0]
-):
-    print(metadata)
-    print(document)
-    print("-" * 40)
+# Eğer sonuç bulunamazsa kontrolü
+if not results["documents"] or not results["documents"][0]:
+    print("Bu hastaya ait eşleşen bir bilgi bulunamadı.")
+else:
+    for document, metadata in zip(results["documents"][0], results["metadatas"][0]):
+        print(f" Bilgi Tipi: {metadata.get('type', 'Bilinmiyor')}")
+        if "category" in metadata:
+            print(f" Kategori: {metadata['category']}")
+        print(f" Belge İçeriği:\n{document}")
+        print("-" * 40)
