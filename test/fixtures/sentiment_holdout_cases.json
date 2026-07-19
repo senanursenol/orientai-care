@@ -1,0 +1,29 @@
+[
+  {"text": "Nerede olduğumu anlayamıyorum, lütfen yanımda kalın.", "label": "anxious"},
+  {"text": "Oğlum gelmeyince içime kötü şeyler doğuyor.", "label": "anxious"},
+  {"text": "İçimde büyük bir korku var, ne olacak bilmiyorum.", "label": "anxious"},
+  {"text": "Etraf bana yabancı geliyor, çok telaşlandım.", "label": "anxious"},
+  {"text": "İlaçları karıştırmış olabilirim, bundan kaygılanıyorum.", "label": "anxious"},
+  {"text": "Eve dönemeyeceğim diye endişe duyuyorum.", "label": "anxious"},
+
+  {"text": "Moralim hiç iyi değil.", "label": "negative"},
+  {"text": "Bugün hiçbir şeye hevesim yok.", "label": "negative"},
+  {"text": "Kendimi değersiz ve kederli hissediyorum.", "label": "negative"},
+  {"text": "Bu durum beni çok rahatsız etti.", "label": "negative"},
+  {"text": "Bütün gün ağlamak istedim.", "label": "negative"},
+  {"text": "Artık bundan hoşlanmıyorum.", "label": "negative"},
+
+  {"text": "Torunumu görünce yüzüm güldü.", "label": "positive"},
+  {"text": "Bugün içim neşe dolu.", "label": "positive"},
+  {"text": "Sohbetimiz bana çok iyi geldi.", "label": "positive"},
+  {"text": "Burada olmaktan memnuniyet duyuyorum.", "label": "positive"},
+  {"text": "Sabah çok keyifli uyandım.", "label": "positive"},
+  {"text": "Ailem yanımda olduğu için içim rahat.", "label": "positive"},
+
+  {"text": "Kahvaltıda peynir yedim.", "label": "neutral"},
+  {"text": "Pencereyi açabilir misin?", "label": "neutral"},
+  {"text": "Saat dokuzda hemşire gelecek.", "label": "neutral"},
+  {"text": "Gözlüğüm masanın üzerinde.", "label": "neutral"},
+  {"text": "Bugün iki bardak su içtim.", "label": "neutral"},
+  {"text": "Odam ikinci katta.", "label": "neutral"}
+]

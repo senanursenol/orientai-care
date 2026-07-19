@@ -1,0 +1,21 @@
+[
+  {"text": "Korkmuyorum diyorum ama aslında içimde büyük bir kaygı var.", "label": "anxious"},
+  {"text": "Sakinleşemiyorum, kızımın başına bir şey geldiğini düşünüyorum.", "label": "anxious"},
+  {"text": "Beni burada bırakacaklar diye telaş içindeyim.", "label": "anxious"},
+  {"text": "Yolumu bulamazsam ne yaparım diye endişe duyuyorum.", "label": "anxious"},
+
+  {"text": "Moralim bozuk değil sanıyordum ama bugün çok kederliyim.", "label": "negative"},
+  {"text": "Mutlu değilim, kendimi bitkin hissediyorum.", "label": "negative"},
+  {"text": "Bu durumdan hiç hoşlanmadım.", "label": "negative"},
+  {"text": "Bugün içimden hiçbir şey gelmiyor.", "label": "negative"},
+
+  {"text": "Moralim bozuk değil, bugün gayet neşeliyim.", "label": "positive"},
+  {"text": "Artık endişelenmiyorum; içim rahat ve keyifliyim.", "label": "positive"},
+  {"text": "Dün üzgündüm fakat bugün çok mutluyum.", "label": "positive"},
+  {"text": "Yardımınız sayesinde kendimi emniyette hissediyorum.", "label": "positive"},
+
+  {"text": "Korku kelimesi bu kitabın başlığında geçiyor.", "label": "neutral"},
+  {"text": "Endişe üzerine bir televizyon programı izledim.", "label": "neutral"},
+  {"text": "Doktor moralimin nasıl olduğunu sordu.", "label": "neutral"},
+  {"text": "Mutlu adında bir komşum var.", "label": "neutral"}
+]

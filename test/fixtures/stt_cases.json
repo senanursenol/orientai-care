@@ -1,0 +1,62 @@
+[
+  {
+    "id": "name_eralp",
+    "text": "Merhaba, benim adım Eralp.",
+    "voice": "tr-TR-AhmetNeural",
+    "rate": "-20%"
+  },
+  {
+    "id": "calm_mood",
+    "text": "Bugün kendimi çok huzurlu hissediyorum.",
+    "voice": "tr-TR-EmelNeural",
+    "rate": "-15%"
+  },
+  {
+    "id": "medicine_time",
+    "text": "İlacımı saat sekizde almam gerekiyor.",
+    "voice": "tr-TR-AhmetNeural",
+    "rate": "-25%"
+  },
+  {
+    "id": "name_senanur",
+    "text": "Kızım Senanur öğleden sonra gelecek.",
+    "voice": "tr-TR-EmelNeural",
+    "rate": "-20%"
+  },
+  {
+    "id": "name_emrullah",
+    "text": "Emrullah mutfakta bir bardak su hazırlıyor.",
+    "voice": "tr-TR-AhmetNeural",
+    "rate": "-15%"
+  },
+  {
+    "id": "name_gamze",
+    "text": "Gamze gözlüğümü komodinin üzerine bıraktı.",
+    "voice": "tr-TR-EmelNeural",
+    "rate": "-25%"
+  },
+  {
+    "id": "safety_threat",
+    "text": "Bütün dünyayı yakacağım.",
+    "voice": "tr-TR-AhmetNeural",
+    "rate": "-20%"
+  },
+  {
+    "id": "name_ayse",
+    "text": "Torunum Ayşe yarın bizi ziyaret edecek.",
+    "voice": "tr-TR-EmelNeural",
+    "rate": "-15%"
+  },
+  {
+    "id": "orientation_help",
+    "text": "Nerede olduğumu hatırlamıyorum, lütfen yardım edin.",
+    "voice": "tr-TR-AhmetNeural",
+    "rate": "-25%"
+  },
+  {
+    "id": "appointment",
+    "text": "Doktor randevum çarşamba günü saat üçte.",
+    "voice": "tr-TR-EmelNeural",
+    "rate": "-20%"
+  }
+]
