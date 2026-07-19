@@ -404,9 +404,9 @@ Completed
 
 ## Sprint Goal
 
-The goal of Sprint 2 was to transform the initial OrientAI infrastructure into a functional AI interaction system by developing the voice interaction layer, RAG-supported memory retrieval pipeline, LLM prompt structure, Speech-to-Text (STT), Text-to-Speech (TTS), sentiment analysis modules, backend API flows and the initial React patient interaction interface.
+The goal of Sprint 2 was to develop the core AI interaction capabilities of OrientAI by implementing the voice interaction layer, RAG-supported memory retrieval pipeline, LLM prompt structure, Speech-to-Text (STT), Text-to-Speech (TTS), sentiment analysis modules, backend API flows and the initial React patient interaction interface.
 
-During this sprint, OrientAI gained the ability to process user voice/text inputs, analyze emotional states, retrieve patient-related memories through RAG, and present AI analysis results through the frontend interface.
+During this sprint, OrientAI gained the ability to process user voice and text inputs, analyze emotional states, retrieve patient-related memories through RAG, and present AI analysis results through the frontend interface.
 
 ---
 
@@ -445,62 +445,42 @@ The implemented modules include:
 - RAG-based patient memory retrieval
 - Voice input processing
 - Speech-to-Text conversion
+- Text-to-Speech integration
 - Sentiment analysis
 - Safety-related emotional signal detection
 - Frontend visualization of AI analysis results
 
 ---
 
-## RAG-Supported Patient Memory Retrieval
+# RAG Prompt Engineering and Validation Tests
 
-The RAG pipeline enables OrientAI to retrieve relevant patient information from the vector database and use this information during response generation.
-
-The implemented flow:
-
-1. User asks a question.
-2. Patient-related memories are retrieved from ChromaDB.
-3. Retrieved context is added to the LLM prompt.
-4. Response generation is performed using only available patient information.
-
-This structure reduces hallucination risk and provides memory-aware responses.
-
-![Sprint 2 RAG Chat](assets/screenshots/sprint_2_rag_chat.png)
-
-![Sprint 2 RAG Chat 2](assets/screenshots/sprint_2_rag_chat_2.png)
-
-
----
-
-## RAG Prompt Engineering and Validation Tests
-
-Prompt structures were developed to ensure that the LLM uses only retrieved patient information.
+The RAG pipeline was improved with prompt engineering rules to ensure that generated responses are based only on retrieved patient information.
 
 Implemented rules:
 
-- Do not create unavailable memories.
+- Do not generate unavailable memories.
 - Do not assume missing patient information.
 - Use only retrieved context.
-- Provide short and supportive answers.
-- Prioritize patient-related information.
+- Provide supportive and patient-oriented responses.
 
-Validation tests were performed for:
+Validation scenarios:
 
-- Context usage
+- Context usage validation
 - Hallucination prevention
-- Memory-grounded responses
+- Memory-grounded response generation
 
 
-### Prompt Test Result
+## Prompt Test Result
 
 ![Prompt Test Success](assets/tests/prompt_test_success.png)
 
 
-### RAG Context Test
+## RAG Context Test
 
 ![RAG Context Test](assets/tests/rag_prompt_context_test.png)
 
 
-### Hallucination Prevention Test
+## Hallucination Prevention Test
 
 ![RAG Hallucination Prevention](assets/tests/rag_hallucination_prevention_test.png)
 
@@ -510,27 +490,27 @@ Validation tests were performed for:
 
 A complete voice processing pipeline was implemented.
 
-The pipeline includes:
+```
 User Voice Input
-|
-↓
+        |
+        ↓
 Audio Processing
-|
-↓
+        |
+        ↓
 Whisper STT
-|
-↓
+        |
+        ↓
 Text Processing
-|
-↓
+        |
+        ↓
 Sentiment Analysis
-|
-↓
+        |
+        ↓
 AI Response Generation
-|
-↓
+        |
+        ↓
 TTS Response
-
+```
 
 Implemented features:
 
@@ -545,14 +525,13 @@ Implemented features:
 
 # Sentiment Analysis and Safety Detection
 
-A Turkish sentiment analysis module was implemented to understand the emotional state of the user.
+A Turkish sentiment analysis module was implemented to understand user emotional states.
 
 Supported categories:
 
 - Positive
 - Negative
 - Neutral
-
 
 The system provides:
 
@@ -562,39 +541,40 @@ The system provides:
 - Safety analysis result
 - Warning signals
 
-
-The safety layer identifies potentially concerning expressions and provides additional attention signals for caregivers.
+A separate safety detection layer was added to identify potentially critical expressions and attention-required situations.
 
 ---
 
-## Frontend Sentiment Analysis Results
+# Frontend Integration
 
-The React interface was updated to display AI analysis results in a user-friendly format.
+The React frontend was connected with AI service outputs.
 
-Displayed information:
+Implemented features:
 
-- Detected sentiment
-- Confidence percentage
-- Safety warnings
-- Voice transcription details
+- Text input analysis
+- Voice input analysis
+- Sentiment visualization
+- Confidence score display
+- Safety warning visualization
+- Voice transcription result display
 
 
-### Positive Sentiment Example
+## Positive Sentiment Example
 
 ![Positive Sentiment Analysis](assets/screenshots/frontend_text_positive_sentiment.png)
 
 
-### Negative Sentiment Example
+## Negative Sentiment Example
 
 ![Negative Sentiment Analysis](assets/screenshots/frontend_text_negative_sentiment.png)
 
 
-### Voice Analysis Example
+## Voice Analysis Example
 
 ![Voice Analysis Result](assets/screenshots/frontend_voice_analysis_result.png)
 
 
-### Voice Positive Sentiment Example
+## Voice Positive Sentiment Example
 
 ![Voice Positive Sentiment](assets/screenshots/frontend_voice_positive_sentiment.png)
 
@@ -606,39 +586,27 @@ Displayed information:
 
 The Python AI service architecture was expanded with modular components.
 
-Implemented service modules:
+```
 services/
-└── mentes-ai-service
-└── app
-└── services
-├── stt
-│ ├── whisper.py
-│ ├── voice_input.py
-│ └── audio_processing.py
-|
-├── tts
-│ └── tts.py
-|
-├── sentiment
-│ └── sentiment.py
-|
-└── rag
-├── retriever_service.py
-├── query.py
-└── prompt_builder.py
-
-
----
-
-## RAG Retriever Service
-
-The RAG layer was improved with:
-
-- Patient memory retrieval
-- Vector database querying
-- Context preparation
-- Prompt generation
-- Retrieved information validation
+└── mentes-ai-service/
+    └── app/
+        └── services/
+            ├── stt/
+            │   ├── whisper.py
+            │   ├── voice_input.py
+            │   └── audio_processing.py
+            │
+            ├── tts/
+            │   └── tts.py
+            │
+            ├── sentiment/
+            │   └── sentiment.py
+            │
+            └── rag/
+                ├── retriever_service.py
+                ├── query.py
+                └── prompt_builder.py
+```
 
 ---
 
@@ -670,9 +638,9 @@ Implemented tests:
 
 # Sprint 2 Review
 
-Sprint 2 successfully transformed the OrientAI project from an infrastructure-focused system into a functional AI-assisted interaction platform.
+Sprint 2 transformed OrientAI from an infrastructure-focused project into a functional AI interaction platform.
 
-During this sprint:
+Completed achievements:
 
 - Voice interaction capabilities were added.
 - STT and TTS pipelines were implemented.
@@ -681,53 +649,9 @@ During this sprint:
 - Sentiment analysis and safety detection modules were created.
 - Frontend interfaces were connected with AI analysis outputs.
 
-The sprint created the foundation required for future LLM response generation, caregiver workflows and multimodal patient assistance features.
+Detailed review:
 
----
-
-# Sprint 2 Retrospective
-
-## What Went Well
-
-- AI service modules were successfully separated into independent components.
-- STT, TTS and sentiment analysis pipelines were implemented.
-- RAG prompt structure improved memory-based response generation.
-- Frontend and AI service communication was established.
-- Testing scenarios helped validate important AI behaviors.
-- Team coordination improved compared to Sprint 1.
-- GitHub workflow and branch management became more consistent.
-
----
-
-## What Could Be Improved
-
-- API contracts between frontend and backend could have been documented earlier.
-- Service folder structures required some adjustments during integration.
-- Dependency management for AI libraries caused additional configuration work.
-- More automated end-to-end tests could be added.
-- Documentation updates should be performed continuously during development.
-
----
-
-## Challenges
-
-- Integrating multiple AI components required additional debugging.
-- Git merge conflicts occurred while combining team contributions.
-- Python dependency versions required synchronization.
-- Connecting frontend components with AI outputs required additional adjustments.
-- Maintaining consistency between Jira, GitHub and documentation required extra coordination.
-
----
-
-## Action Items for Sprint 3
-
-- Complete LLM response generation pipeline.
-- Improve RAG retrieval quality.
-- Add multimodal vision capabilities.
-- Improve caregiver dashboard features.
-- Expand end-to-end testing.
-- Improve deployment structure.
-- Continue updating project documentation.
+[Sprint 2 Review and Retrospective](docs/sprint_2_review_retrospective.md)
 
 ---
 
