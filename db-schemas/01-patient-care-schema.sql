@@ -36,3 +36,12 @@ CREATE TABLE logs (
     note TEXT,
     status VARCHAR(50)
 );
+CREATE TABLE interaction_logs (
+    log_id SERIAL PRIMARY KEY,
+    patient_id INT REFERENCES patients(patient_id),
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    input_type VARCHAR(20) NOT NULL,
+    user_input TEXT NOT NULL,
+    response TEXT NOT NULL,
+    transcription TEXT
+);
