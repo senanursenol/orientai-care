@@ -649,10 +649,6 @@ Completed achievements:
 - Sentiment analysis and safety detection modules were created.
 - Frontend interfaces were connected with AI analysis outputs.
 
-Detailed review:
-
-[Sprint 2 Review and Retrospective](docs/sprint_2_review_retrospective.md)
-
 ---
 
 # Sprint 2 Documentation

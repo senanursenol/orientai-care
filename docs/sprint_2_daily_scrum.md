@@ -63,7 +63,7 @@ This screenshot documents progress updates related to speech processing services
 
 This screenshot shows communication about frontend integration and displaying AI analysis results.
 
-![Frontend Integration Progress](../assets/daily_scrum/team_progress_emrullah_s.jpeg)
+![Frontend Integration Progress](../assets/daily_scrum/team_progress_emrullah_senanur.jpeg)
 
 
 ---
