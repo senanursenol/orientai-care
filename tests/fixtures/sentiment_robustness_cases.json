@@ -1,0 +1,21 @@
+[
+  {"text": "Kafam çok karıştı, ne yapmam gerektiğini söyleyin.", "label": "anxious"},
+  {"text": "Sanki başıma kötü bir şey gelecekmiş gibi hissediyorum.", "label": "anxious"},
+  {"text": "Burası bana tanıdık gelmiyor, ürktüm.", "label": "anxious"},
+  {"text": "Kızım cevap vermiyor, meraktan duramıyorum.", "label": "anxious"},
+
+  {"text": "İçimde derin bir hüzün var.", "label": "negative"},
+  {"text": "Bugün çok isteksiz ve bitkinim.", "label": "negative"},
+  {"text": "Her şeyden usandım.", "label": "negative"},
+  {"text": "Kendimi kötü ve umutsuz hissediyorum.", "label": "negative"},
+
+  {"text": "İçim kıpır kıpır, çok sevinçliyim.", "label": "positive"},
+  {"text": "Bugün moralim çok yüksek.", "label": "positive"},
+  {"text": "Sizi görünce içim ferahladı.", "label": "positive"},
+  {"text": "Bu haber beni çok sevindirdi.", "label": "positive"},
+
+  {"text": "Çayımı şekersiz içerim.", "label": "neutral"},
+  {"text": "Anahtar çekmecede duruyor.", "label": "neutral"},
+  {"text": "Hemşire biraz önce geldi.", "label": "neutral"},
+  {"text": "Akşam yemeği saat altıda.", "label": "neutral"}
+]

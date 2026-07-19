@@ -139,6 +139,82 @@ Python AI Services
 | Project Management | Jira |
 | Version Control | Git, GitHub |
 
+### Local voice API
+
+Start the Python voice service from the repository root with:
+
+```powershell
+python -m service --reload
+```
+
+The service listens on `http://127.0.0.1:8000`. The command is safe to run
+again: if the OrientAI API is already running, it reuses that instance instead
+of starting a second server and causing Windows error 10048. To use a different
+port, run `python -m service --reload --port 8001` and set the frontend's
+`VITE_VOICE_API_URL` to the matching address.
+
+Whisper defaults to the portable CPU/int8 mode. A machine with the complete
+CUDA runtime installed can opt into GPU inference by setting
+`WHISPER_DEVICE=cuda` and `WHISPER_COMPUTE_TYPE=float16` before startup.
+
+Before transcription, browser recordings are converted to mono 16 kHz PCM,
+filtered to the speech frequency band, conservatively denoised, and loudness
+normalized. Browser capture also requests echo cancellation, noise suppression,
+and automatic gain control. The processor deliberately avoids a hard noise gate
+so quiet speech and natural pauses are preserved.
+
+### Turkish sentiment and anxiety analysis
+
+The orchestrator uses `savasy/bert-base-turkish-sentiment-cased` as its Turkish
+positive/negative transformer. A transparent care-domain calibration layer adds
+`neutral` and `anxious`, handles common Turkish negations, and exposes the
+signals behind the decision. The async service returns `label`, `score`, all
+four class scores, `low_confidence`, `needs_attention`, and the model name.
+
+The voice endpoint runs this analysis immediately after transcription and
+returns it under the `sentiment` field. The React screen renders the main
+emotion, routing-confidence score, low-confidence warning, and an attention
+message for anxious or negative speech. This reflects the transcribed content,
+not acoustic prosody such as pitch or speaking speed.
+
+The same screen also accepts typed input through `POST /api/text/analyze`.
+Typed text skips Whisper and goes directly to the same sentiment service, so
+voice and text results use one consistent label and confidence contract. The
+frontend keeps both input types in a conversation-style analysis history while
+the answer-generation model is inactive.
+
+A separate transparent Turkish safety-intent layer detects explicit violent
+threats and self-harm intent before neutral sentiment calibration. Its result is
+returned under `sentiment.safety` with `label`, `severity`, `score`,
+`needs_attention`, and matched signals. Reported or fictional threats are kept
+as low-severity context, while benign uses such as lighting a stove remain
+safe. Safety matches override the old neutral fallback and appear as a prominent
+human-review warning in the React analysis card.
+
+Neutral confidence is no longer a fixed 0.75. When the binary transformer and
+care-domain neutral rule disagree, the calibrated neutral confidence is reduced
+and can be marked `low_confidence`, making the source of uncertainty visible.
+
+The model is loaded lazily and cached locally after its first download. Set
+`SENTIMENT_LOCAL_FILES_ONLY=true` to prohibit network fallback in provisioned
+or offline environments. The model can be changed with `SENTIMENT_MODEL_NAME`.
+The returned score is a routing-confidence heuristic, not a clinical probability
+or diagnosis; anxious/negative results indicate that the assistant should reply
+carefully or request human review according to product policy.
+
+Run the deterministic tests and real-model evaluations with:
+
+```powershell
+python -m unittest discover -s tests -v
+python -m tests.evaluate_sentiment
+python -m tests.evaluate_sentiment --fixture tests/fixtures/sentiment_holdout_cases.json
+python -m tests.evaluate_sentiment --fixture tests/fixtures/sentiment_robustness_cases.json
+python -m tests.evaluate_sentiment --fixture tests/fixtures/sentiment_adversarial_cases.json
+```
+
+These synthetic tests are regression evidence for the prototype, not clinical
+validation or a replacement for evaluation on consented target-user speech.
+
 ---
 
 ## 🧪 Synthetic Data Approach

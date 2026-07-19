@@ -13,11 +13,23 @@ python-dotenv>=1.0.1
 
 # Whisper (speech -> text) :
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 faster-whisper>=1.1.0
 >>>>>>> 91d16b3 (First Commit)
+=======
+faster-whisper>=1.2.1,<2.0.0
+
+# Audio preprocessing
+av>=11.0.0
+numpy>=1.26.0
+scipy>=1.13.0
+>>>>>>> 77953ac (Sprint 2)
 
 # LLM services
+
+# Turkish sentiment analysis
+transformers>=4.45.0,<5.0.0
 
 
 # RAG / vector DB :

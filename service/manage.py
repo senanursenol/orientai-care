@@ -15,19 +15,23 @@ import logging
 from datetime import datetime, timezone
 from typing import Optional
 
-from fastapi import APIRouter, HTTPException, BackgroundTasks
-from pydantic import BaseModel
+from fastapi import APIRouter, BackgroundTasks, HTTPException
+from pydantic import BaseModel, Field
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 # Replace these with actual service imports
 # from services import whisper_service, sentiment_service, rag_service
 # from services import vision_service, llm_service, tts_service
 =======
+=======
+from .sentiment import sentiment_service
+>>>>>>> 77953ac (Sprint 2)
 from .tts import tts_service
 from .whisper import whisper_service
 
 # Replace these with actual service imports
-# from services import sentiment_service, rag_service
+# from services import rag_service
 # from services import vision_service, llm_service
 >>>>>>> 91d16b3 (First Commit)
 # from db import db
@@ -48,7 +52,7 @@ class ProcessResponse(BaseModel):
     text_response: str
     audio_response: Optional[bytes] = None
     sentiment: Optional[dict] = None
-    warnings: list[str] = []
+    warnings: list[str] = Field(default_factory=list)
 
 # Helpers
 
