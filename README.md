@@ -420,6 +420,18 @@ The goal of Sprint 2 is to develop the voice interaction layer, RAG-supported me
 
 ![Sprint 2 Backlog](assets/sprint_boards/sprint_2_backlog.png)
 
+## Product Status Screenshots
+
+Sprint 2 introduces the memory-supported chat flow (RAG), the speech-to-text pipeline, and the sentiment analysis module. The demo outputs below document the current progress of each module.
+
+### RAG-Supported Chat (React Patient Screen)
+
+The React patient chat screen sends a patient question to the Node.js `/api/chat` endpoint, which retrieves relevant memories from ChromaDB and returns a memory-grounded answer. The retrieved memories are shown to the user under "Hatırlatılan bilgiler".
+
+![Sprint 2 RAG Chat](assets/screenshots/sprint_2_rag_chat.png)
+
+![Sprint 2 RAG Chat 2](assets/screenshots/sprint_2_rag_chat_2.png)
+
 ## Sprint Review
 
 To be completed at the end of Sprint 2.
