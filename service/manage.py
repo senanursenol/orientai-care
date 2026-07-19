@@ -18,9 +18,18 @@ from typing import Optional
 from fastapi import APIRouter, HTTPException, BackgroundTasks
 from pydantic import BaseModel
 
+<<<<<<< HEAD
 # Replace these with actual service imports
 # from services import whisper_service, sentiment_service, rag_service
 # from services import vision_service, llm_service, tts_service
+=======
+from .tts import tts_service
+from .whisper import whisper_service
+
+# Replace these with actual service imports
+# from services import sentiment_service, rag_service
+# from services import vision_service, llm_service
+>>>>>>> 91d16b3 (First Commit)
 # from db import db
 
 logger = logging.getLogger("orchestrator")
@@ -173,4 +182,8 @@ async def process_input(payload: PatientInputSchema, background_tasks: Backgroun
         audio_response=audio_response,
         sentiment=sentiment,
         warnings=warnings,
+<<<<<<< HEAD
     )
+=======
+    )
+>>>>>>> 91d16b3 (First Commit)

@@ -11,6 +11,10 @@ python-dotenv>=1.0.1
 
 
 # Whisper (speech -> text) :
+<<<<<<< HEAD
+=======
+faster-whisper>=1.1.0
+>>>>>>> 91d16b3 (First Commit)
 
 # LLM services
 
@@ -19,6 +23,10 @@ python-dotenv>=1.0.1
 
 
 # TTS (text -> sound) :
+<<<<<<< HEAD
+=======
+edge-tts>=7.2.8,<8.0.0
+>>>>>>> 91d16b3 (First Commit)
 
 
 # Database :
