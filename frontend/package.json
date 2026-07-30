@@ -4,7 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "node dev.mjs",
+    "dev:web": "vite",
+    "dev:api": "python -m uvicorn ai_api:app --reload --port 8000 --env-file ../.env",
+    "setup:ai": "python -m pip install -r requirements.txt",
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview"
