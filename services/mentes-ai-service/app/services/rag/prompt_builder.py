@@ -51,3 +51,18 @@ def build_patient_prompt(context, question, history=""):
         question=question,
         history=history
     )
+
+
+def build_image_memory_prompt(context, image_description, question):
+    """
+    Görsel analiz (vision) çıktısı ile hasta hafızasını (RAG context)
+    birleştirip LLM için hazır prompt oluşturur.
+    """
+
+    template = load_prompt("image_memory_prompt.txt")
+
+    return template.format(
+        context=context,
+        image_description=image_description,
+        question=question
+    )

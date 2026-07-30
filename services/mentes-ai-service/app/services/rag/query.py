@@ -1,5 +1,5 @@
-from services.retriever_service import retrieve_context
-from services.log_service import save_interaction
+from app.services.rag.retriever_service import retrieve_context
+
 patient_id = input("Hasta ID (Örn: P-1001): ").strip()
 question = input("Sorunuzu girin: ").strip()
 
@@ -17,8 +17,6 @@ print("\n Bulunan En Alakalı Sonuçlar:\n")
 if not results["documents"] or not results["documents"][0]:
     print("Bu hastaya ait eşleşen bir bilgi bulunamadı.")
 else:
-    response = ""
-
     for document, metadata in zip(results["documents"][0], results["metadatas"][0]):
         print(f" Bilgi Tipi: {metadata.get('type', 'Bilinmiyor')}")
         if "category" in metadata:
@@ -26,11 +24,6 @@ else:
         print(f" Belge İçeriği:\n{document}")
         print("-" * 40)
 
-        response += document + "\n"
-
-    save_interaction(
-        patient_id=1,
-        user_input=question,
-        response=response,
-        input_type="text"
-    )
+# Not: konuşma loglama artık Node servisinde (services/mentes-service) yapılıyor
+# — bkz. core/service-mentes/src/application/use-cases/log-interaction.use-case.js.
+# Python tarafı DB'ye yazmaz (mimari kural: DB ile sadece Node konuşur).

@@ -24,6 +24,9 @@ from app.services.stt.whisper import (
     whisper_service,
 )
 from app.services.tts.tts import tts_service
+from app.services.rag.retriever_service import retrieve_context
+from app.services.rag.prompt_builder import build_rag_prompt
+from app.services.rag.vision_memory_service import retrieve_memories_for_image
 
 
 class SafetyResponse(BaseModel):
@@ -74,6 +77,44 @@ class TextInputResponse(BaseModel):
 
     input: str
     sentiment: SentimentResponse
+
+
+class RagChatRequest(BaseModel):
+    """Node backend'in (services/mentes-service) /api/chat için gönderdiği istek."""
+
+    patient_id: str = Field(min_length=1)
+    message: str = Field(min_length=1, max_length=2_000)
+
+
+class RagContextDocument(BaseModel):
+    """Retriever'dan dönen tek bir anı/rutin kaydı."""
+
+    content: str
+    metadata: dict
+
+
+class RagChatResponse(BaseModel):
+    """Node backend'e dönen RAG yanıtı."""
+
+    answer: str
+    context: list[RagContextDocument]
+
+
+class ImageMemoryRequest(BaseModel):
+    """Vision servisinden (ORI-28/29) gelen fotoğraf açıklamasını RAG hafızasıyla ilişkilendirme isteği."""
+
+    patient_id: str = Field(min_length=1)
+    image_description: str = Field(min_length=1)
+    detected_labels: list[str] | None = None
+
+
+class ImageMemoryResponse(BaseModel):
+    """Görsel + RAG bağlamının birleştirildiği, LLM'e verilmeye hazır sonuç."""
+
+    context: str
+    documents: list[RagContextDocument]
+    has_context: bool
+    prompt: str
 
 
 def _allowed_origins() -> list[str]:
@@ -164,4 +205,63 @@ async def transcribe_voice(
         transcription_low_confidence=result.transcription_low_confidence,
         transcription_model=result.transcription_model,
         sentiment=result.sentiment,
+    )
+
+
+@app.post("/api/rag/chat", response_model=RagChatResponse)
+async def rag_chat(payload: RagChatRequest) -> RagChatResponse:
+    """Node backend'in (mentes-service) /api/chat -> /api/rag/chat köprüsü (ORI-21 kontratı)."""
+    try:
+        results = retrieve_context(question=payload.message, patient_id=payload.patient_id)
+    except Exception as exc:  # ChromaDB/collection hataları
+        raise HTTPException(
+            status_code=502, detail="Memory retrieval service is unavailable"
+        ) from exc
+
+    documents = (results.get("documents") or [[]])[0]
+    metadatas = (results.get("metadatas") or [[]])[0]
+    context_docs = [
+        RagContextDocument(content=doc, metadata=meta)
+        for doc, meta in zip(documents, metadatas)
+    ]
+
+    if documents:
+        context_text = "\n".join(documents)
+        prompt = build_rag_prompt(context=context_text, question=payload.message)
+    else:
+        prompt = build_rag_prompt(
+            context="Bu hastaya ait ilgili bir bilgi bulunamadı.",
+            question=payload.message,
+        )
+
+    # Not: gerçek LLM çağrısı henüz bağlanmadı (ayrı bir görev); şimdilik hazırlanan
+    # context'in kendisi cevap olarak döner ki Node ucu (ORI-21) uçtan uca test edilebilsin.
+    answer = prompt if not documents else "\n".join(documents)
+
+    return RagChatResponse(answer=answer, context=context_docs)
+
+
+@app.post("/api/rag/image-memory", response_model=ImageMemoryResponse)
+async def rag_image_memory(payload: ImageMemoryRequest) -> ImageMemoryResponse:
+    """
+    ORI-31: Vision servisinden (ORI-28/29) gelen fotoğraf açıklamasını hastanın
+    kişisel anı/rutin hafızasıyla (RAG, patient_id filtreli) ilişkilendirir ve
+    LLM'e verilmeye hazır bir prompt üretir.
+    """
+    try:
+        result = retrieve_memories_for_image(
+            image_description=payload.image_description,
+            patient_id=payload.patient_id,
+            detected_labels=payload.detected_labels,
+        )
+    except Exception as exc:
+        raise HTTPException(
+            status_code=502, detail="Memory retrieval service is unavailable"
+        ) from exc
+
+    return ImageMemoryResponse(
+        context=result["context"],
+        documents=[RagContextDocument(**doc) for doc in result["documents"]],
+        has_context=result["has_context"],
+        prompt=result["prompt"],
     )
