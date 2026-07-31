@@ -1,0 +1,212 @@
+.sent-chart__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.sent-chart__title {
+  margin: 0;
+  color: var(--color-primary-dark);
+  font-size: 1.02rem;
+}
+
+.sent-chart__range {
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+}
+
+.sent-chart__empty {
+  margin: 0.9rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+/* --------------------------------------------------------- yığılmış çubuk */
+
+.sent-bar {
+  display: flex;
+  height: 26px;
+  border-radius: 7px;
+  overflow: hidden;
+  background: var(--color-background);
+}
+
+.sent-bar__segment {
+  display: block;
+  min-width: 3px;
+  flex-basis: 0;
+  transition: flex-grow 0.25s ease;
+}
+
+.sent-bar__segment--positive {
+  background: var(--color-sentiment-positive);
+}
+
+.sent-bar__segment--neutral {
+  background: var(--color-sentiment-neutral);
+}
+
+.sent-bar__segment--negative {
+  background: var(--color-sentiment-negative);
+}
+
+.sent-bar__segment--anxious {
+  background: var(--color-sentiment-anxious);
+}
+
+/* ---------------------------------------------------------------- açıklama */
+
+.sent-chart__legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+  gap: 0.5rem 1.1rem;
+  margin: 0.95rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sent-chart__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.84rem;
+}
+
+.sent-chart__dot {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.sent-chart__dot--positive {
+  background: var(--color-sentiment-positive);
+}
+
+.sent-chart__dot--neutral {
+  background: var(--color-sentiment-neutral);
+}
+
+.sent-chart__dot--negative {
+  background: var(--color-sentiment-negative);
+}
+
+.sent-chart__dot--anxious {
+  background: var(--color-sentiment-anxious);
+}
+
+.sent-chart__legend-label {
+  flex: 1;
+  color: var(--color-text);
+}
+
+.sent-chart__legend-value {
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------- risk şeridi */
+
+.sent-chart__risk {
+  margin: 1.1rem 0 0;
+  padding: 0.62rem 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: 11px;
+  background: var(--color-background);
+  color: var(--color-text-muted);
+  font-size: 0.86rem;
+}
+
+.sent-chart__risk--active {
+  border-color: var(--color-warning);
+  background: var(--color-sentiment-anxious-soft);
+  color: #7a5713;
+}
+
+.sent-chart__risk strong {
+  color: inherit;
+  font-weight: 700;
+}
+
+/* -------------------------------------------------------- günlük dağılım */
+
+.sent-chart__daily {
+  margin-top: 1.35rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.sent-chart__subtitle {
+  margin: 0 0 0.75rem;
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.sent-chart__days {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.sent-chart__day {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.sent-chart__day .sent-bar {
+  flex: 1;
+  height: 18px;
+  border-radius: 5px;
+}
+
+.sent-chart__day-label {
+  flex: none;
+  width: 116px;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--color-text);
+  font-size: 0.82rem;
+}
+
+.sent-chart__day-flag {
+  padding: 0.05rem 0.4rem;
+  border: 1px solid var(--color-warning);
+  border-radius: var(--radius-pill);
+  background: var(--color-sentiment-anxious-soft);
+  color: #8a6316;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.sent-chart__day-total {
+  flex: none;
+  width: 22px;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 560px) {
+  .sent-chart__day-label {
+    width: 92px;
+    font-size: 0.78rem;
+  }
+
+  .sent-chart__day-flag {
+    display: none;
+  }
+}

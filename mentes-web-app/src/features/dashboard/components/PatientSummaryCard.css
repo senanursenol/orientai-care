@@ -1,0 +1,103 @@
+.patient-summary__identity {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.patient-summary__avatar {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.patient-summary__names {
+  flex: 1;
+  min-width: 0;
+}
+
+.patient-summary__name {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--color-text);
+  letter-spacing: -0.015em;
+}
+
+.patient-summary__context {
+  margin: 0.15rem 0 0;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+}
+
+.patient-summary__caregiver {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.1rem;
+  text-align: right;
+}
+
+.patient-summary__caregiver-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.patient-summary__caregiver-name {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.patient-summary__caregiver-relation {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.patient-summary__details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.85rem 1.25rem;
+  margin: 1.15rem 0 0;
+  padding: 1.05rem 0 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.patient-summary__detail dt {
+  margin: 0 0 0.15rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.patient-summary__detail dd {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--color-text);
+}
+
+@media (max-width: 560px) {
+  .patient-summary__identity {
+    flex-wrap: wrap;
+  }
+
+  .patient-summary__caregiver {
+    align-items: flex-start;
+    width: 100%;
+    text-align: left;
+    padding-top: 0.35rem;
+  }
+}

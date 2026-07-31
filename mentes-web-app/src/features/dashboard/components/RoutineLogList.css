@@ -1,0 +1,136 @@
+.routine-log__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.routine-log__title {
+  margin: 0;
+  color: var(--color-primary-dark);
+  font-size: 1.02rem;
+}
+
+.routine-log__summary {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+}
+
+.routine-log__empty {
+  margin: 1.1rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.routine-log__groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  margin-top: 1.15rem;
+}
+
+.routine-log__day {
+  margin: 0 0 0.5rem;
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.routine-log__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.routine-log__row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.62rem 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 11px;
+  background: var(--color-surface);
+}
+
+.routine-log__row--completed {
+  background: var(--color-sentiment-positive-soft);
+  border-color: #cfe4cf;
+}
+
+.routine-log__row--missed {
+  background: var(--color-sentiment-negative-soft);
+  border-color: #eed3d1;
+}
+
+.routine-log__time {
+  flex: none;
+  width: 46px;
+  color: var(--color-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.routine-log__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.routine-log__name {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.routine-log__note {
+  margin: 0.12rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+}
+
+.routine-log__status {
+  flex: none;
+  padding: 0.14rem 0.6rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.routine-log__status--completed {
+  background: var(--color-surface);
+  border-color: var(--color-success);
+  color: #2c6b2f;
+}
+
+.routine-log__status--missed {
+  background: var(--color-surface);
+  border-color: var(--color-danger);
+  color: #8f3a34;
+}
+
+.routine-log__status--pending {
+  background: var(--color-background);
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 560px) {
+  .routine-log__row {
+    flex-wrap: wrap;
+    gap: 0.4rem 0.7rem;
+  }
+
+  .routine-log__body {
+    flex: 1 1 100%;
+    order: 3;
+  }
+}
