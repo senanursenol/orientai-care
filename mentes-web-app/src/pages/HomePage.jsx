@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Card from '../components/Card'
-import { checkBackendHealth } from '../services/healthService'
+import { checkBackendHealth } from '../api/healthService'
 import './HomePage.css'
 
 /**

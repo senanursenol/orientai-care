@@ -1,11 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import {
-  analyzePatientText,
   describePatientPhoto,
+  sendPatientMessage,
+  sendPatientVoiceMessage,
   synthesizePatientSpeech,
-  transcribePatientVoice,
-} from '../services/aiService'
+} from '../api/patientService'
 import './PatientChatPage.css'
+
+// TODO: gerçek hasta kimliği/oturum yönetimi ayrı bir işte (auth) gelecek;
+// şimdilik sabit bir test hastası kullanılıyor.
+const PATIENT_ID = 'P-1001'
 
 function supportedAudioType() {
   const candidates = [
@@ -149,7 +153,7 @@ function PatientChatPage() {
     appendMessages({ role: 'user', kind: 'text', text })
 
     try {
-      const result = await analyzePatientText(text)
+      const result = await sendPatientMessage(PATIENT_ID, text)
       const assistantText = result.assistant_response
       appendMessages({
         role: 'assistant',
@@ -169,7 +173,7 @@ function PatientChatPage() {
     setStatus('voice')
 
     try {
-      const result = await transcribePatientVoice(audioBlob)
+      const result = await sendPatientVoiceMessage(PATIENT_ID, audioBlob)
       const assistantText = result.assistant_response
       appendMessages(
         {
@@ -288,7 +292,7 @@ function PatientChatPage() {
     })
 
     try {
-      const result = await describePatientPhoto(image)
+      const result = await describePatientPhoto(PATIENT_ID, image)
       appendMessages({
         role: 'assistant',
         kind: 'vision',

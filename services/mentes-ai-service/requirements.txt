@@ -1,8 +1,14 @@
-# Sprint 1 iskeleti — AI ekibi (Eralp) tarafından genişletilecek
+# Sprint 1 iskeleti — AI ekibi (Eralp) tarafından genişletildi
 fastapi
-uvicorn
+uvicorn[standard]
+python-multipart
 pydantic
 python-dotenv
+google-genai
+faster-whisper
+av
+scipy
+edge-tts
 chromadb==1.5.9
 sentence-transformers==5.6.0
 torch==2.12.1
