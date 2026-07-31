@@ -77,6 +77,14 @@ function PatientChatPage() {
       const audioBlob = await synthesizePatientSpeech(text, controller.signal)
       if (controller.signal.aborted || !voiceSupportRef.current) return
 
+      // Backend, TTS mevcut olmadığında 200 + JSON döndürür (AI_MOCK=true veya
+      // Python AI servisi kapalı). Blob tipi audio değilse sessizce çıkıyoruz;
+      // asistan yazıyla cevap vermeye devam eder, kullanıcıya hata gösterilmez.
+      if (!audioBlob.type.startsWith('audio/')) {
+        stopSpeech()
+        return
+      }
+
       const audioUrl = URL.createObjectURL(audioBlob)
       const audio = new Audio(audioUrl)
       speechUrlRef.current = audioUrl
