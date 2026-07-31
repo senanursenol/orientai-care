@@ -9,12 +9,12 @@ cp .env.example .env
 npm run dev
 ```
 
-Backend `http://localhost:5000` üzerinde ayağa kalkar.
+Backend `http://localhost:4100` üzerinde ayağa kalkar.
 
 ## Health Check
 
 ```bash
-curl http://localhost:5000/api/health
+curl http://localhost:4100/api/health
 ```
 
 Beklenen yanıt:
@@ -35,15 +35,31 @@ Beklenen yanıt:
 ### `POST /api/voice-chat` (ORI-22)
 
 `multipart/form-data`: `patientId` (text), `audio` (dosya) →
-`{ "status": "ok", "transcript": "...", "answer": "...", "context": [...], "audioUrl": "..." }`
+`{ "status": "ok", "transcript": "...", "answer": "...", "context": [...] }`
+
+### `POST /api/tts`
+
+```json
+{ "text": "Merhaba, nasılsınız?" }
+```
+→ ses (audio/mpeg, binary)
+
+### `POST /api/vision/describe`
+
+`multipart/form-data`: `patientId` (text), `image` (dosya) →
+`{ "status": "ok", "description": "...", "model": "..." }`
 
 ## Python AI servisi (mentes-ai-service) kontratı
 
-`AI_SERVICE_URL` üzerinden çağrılan, `src/infrastructure/ai-client/ai-client.js`'in beklediği format:
+`AI_SERVICE_URL` (varsayılan `http://localhost:4200`) üzerinden çağrılan,
+`src/infrastructure/ai-client/ai-client.js`'in beklediği format
+(bkz. `services/mentes-ai-service/app/api/app.py`):
 
+- `POST /api/chat/text` → `{ text, patient_id }` → conversation result (RAG destekli)
+- `POST /api/chat/voice` → multipart `audio` + `patient_id` → conversation result + transcript
+- `POST /api/vision/describe` → multipart `image` + `patient_id` → `{ description, model }`
+- `POST /api/tts/synthesize` → `{ text }` → audio/mpeg (binary)
 - `POST /api/rag/chat` → `{ patient_id, message }` → `{ answer, context: [{ content, metadata }] }`
-- `POST /api/stt` → multipart `audio` → `{ transcript }`
-- `POST /api/tts` → `{ text }` → `{ audio_url }`
 
 Python servisi hazır olmadan geliştirmek için `.env`'de `AI_MOCK=true` kullanılabilir.
 
