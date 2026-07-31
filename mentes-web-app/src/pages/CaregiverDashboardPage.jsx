@@ -3,7 +3,7 @@ import ComingSoon from '../components/ComingSoon'
 /**
  * Bakım veren (caregiver) dashboard ekranı.
  * Sprint 3'te rutin, log ve duygu-durumu verileri
- * src/api/caregiverService.js üzerinden buraya bağlanacak.
+ * src/services/caregiverService.js üzerinden buraya bağlanacak.
  */
 function CaregiverDashboardPage() {
   return (
