@@ -1,0 +1,162 @@
+.conv-log__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
+}
+
+.conv-log__heading {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.conv-log__title {
+  margin: 0;
+  color: var(--color-primary-dark);
+  font-size: 1.02rem;
+}
+
+.conv-log__count {
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+}
+
+.conv-log__controls {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.conv-log__control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.conv-log__control-label {
+  color: var(--color-text-muted);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.conv-log__control select {
+  padding: 0.34rem 0.55rem;
+  border: 1px solid var(--color-border);
+  border-radius: 9px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.conv-log__control select:hover {
+  border-color: var(--color-primary);
+}
+
+.conv-log__empty {
+  margin: 1.1rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.conv-log__groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  margin-top: 1.15rem;
+}
+
+.conv-log__day {
+  margin: 0 0 0.5rem;
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.conv-log__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.conv-log__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.95rem;
+  padding: 0.8rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.conv-log__row:first-child {
+  border-top: none;
+  padding-top: 0.2rem;
+}
+
+.conv-log__meta {
+  flex: none;
+  width: 66px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.conv-log__time {
+  color: var(--color-text);
+  font-size: 0.86rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.conv-log__type {
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+}
+
+.conv-log__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.conv-log__input {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.conv-log__response {
+  margin: 0.3rem 0 0;
+  padding-left: 0.7rem;
+  border-left: 2px solid var(--color-primary-light);
+  border-radius: 0;
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 620px) {
+  .conv-log__row {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .conv-log__meta {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.5rem;
+    width: auto;
+  }
+
+  .conv-log__body {
+    flex: 1 1 100%;
+    order: 3;
+  }
+}

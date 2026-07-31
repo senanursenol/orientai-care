@@ -1,0 +1,233 @@
+.dashboard {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2.25rem 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+/* ------------------------------------------------------------------ intro */
+
+.dashboard__intro {
+  margin-bottom: 0.35rem;
+}
+
+.dashboard__eyebrow {
+  display: block;
+  color: var(--color-primary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.dashboard__intro h1 {
+  margin: 0.45rem 0 0.4rem;
+  color: var(--color-primary-dark);
+  font-size: clamp(1.7rem, 3.6vw, 2.35rem);
+  letter-spacing: -0.035em;
+}
+
+.dashboard__tagline {
+  max-width: 620px;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.98rem;
+}
+
+/* ------------------------------------------------------- loading / error */
+
+.dashboard__state p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.dashboard__state--error p {
+  color: var(--color-danger);
+}
+
+.dashboard__retry {
+  margin-top: 0.9rem;
+  padding: 0.5rem 1.05rem;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-primary-dark);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+
+.dashboard__retry:hover {
+  background: var(--color-primary-light);
+}
+
+/* ---------------------------------------------------------------- metrics */
+
+.dashboard__metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.85rem;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.05rem 1.15rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.metric__label {
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.metric__value {
+  color: var(--color-text);
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Baskın duygu kartı, duygunun rengini alır — panelin tek renkli aksanı. */
+.metric--positive .metric__value {
+  color: var(--color-sentiment-positive);
+}
+
+.metric--neutral .metric__value {
+  color: var(--color-sentiment-neutral);
+}
+
+.metric--negative .metric__value {
+  color: var(--color-sentiment-negative);
+}
+
+.metric--anxious .metric__value {
+  color: #8a6316;
+}
+
+/* ----------------------------------------------------------- panel slots */
+
+.dashboard__panels {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.panel-slot__head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+}
+
+.panel-slot__title {
+  margin: 0;
+  color: var(--color-primary-dark);
+  font-size: 1.02rem;
+}
+
+.panel-slot__ticket {
+  padding: 0.1rem 0.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.panel-slot__description {
+  margin: 0.6rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 640px) {
+  .dashboard {
+    padding: 1.6rem 1rem 2.5rem;
+  }
+}
+
+/* --------------------------------------------------------- veri yok kartı */
+
+.dashboard__notice {
+  border-color: var(--color-warning);
+  background: var(--color-sentiment-anxious-soft);
+}
+
+.dashboard__notice-title {
+  margin: 0 0 0.5rem;
+  color: #7a5713;
+  font-size: 1.02rem;
+}
+
+.dashboard__notice-text {
+  max-width: 68ch;
+  margin: 0 0 0.55rem;
+  color: #7a5713;
+  font-size: 0.89rem;
+  line-height: 1.55;
+}
+
+.dashboard__notice-text--muted {
+  color: var(--color-text-muted);
+  font-size: 0.84rem;
+}
+
+.dashboard__empty-slot p {
+  margin: 0.35rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.89rem;
+}
+
+.dashboard__empty-slot code {
+  padding: 0.05rem 0.32rem;
+  border-radius: 5px;
+  background: var(--color-background);
+  font-size: 0.85rem;
+}
+
+.dashboard__empty-label {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+/* ----------------------------------------------------------------- dipnot */
+
+.dashboard__footnote {
+  margin: 0.35rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.76rem;
+}
+
+.dashboard__footnote code,
+.dashboard__notice code {
+  padding: 0.05rem 0.32rem;
+  border-radius: 5px;
+  background: var(--color-surface);
+  font-size: 0.92em;
+}
+
+/* rutin durumu: saati geçmiş ama tamamlanma kaydı bulunmayan satır */
+.routine-log__row--unknown {
+  background: var(--color-surface);
+}
+
+.routine-log__status--unknown {
+  background: var(--color-background);
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+}
