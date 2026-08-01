@@ -36,26 +36,25 @@ The following screenshots document Sprint 3 team communication, AI integration d
 
 This screenshot shows the team's discussion about AI service development, API integration and the distribution of testing responsibilities.
 
-![AI Development and API Integration Discussion](../assets/daily_scrum/daily_scrum_01_ai_api_discussion.jpeg)
+![AI Development and API Integration Discussion](../assets/daily_scrum/sprint3_daily_scrum_ai_api_planning.jpeg)
 
 ### 2. Documentation and README Preparation
 
 This screenshot documents the coordination of README updates and project documentation before the final repository push.
 
-![Documentation and README Preparation](../assets/daily_scrum/daily_scrum_02_readme_preparation.jpeg)
+![Documentation and README Preparation](../assets/daily_scrum/sprint3_daily_scrum_readme_push_notification.jpeg)
 
 ### 3. GitHub Push and Integration Coordination
 
 This screenshot shows communication regarding completed developments, GitHub push operations and integration verification.
 
-![GitHub Push and Integration Coordination](../assets/daily_scrum/daily_scrum_03_github_integration.jpeg)
+![GitHub Push and Integration Coordination](../assets/daily_scrum/sprint3_daily_scrum_push_control_discussion.jpeg)
 
 ### 4. Final Task Completion Updates
 
 This screenshot shows team members confirming the completion of their assigned tasks and uploading the latest changes to the GitHub repository.
 
-![Final Task Completion Updates](../assets/daily_scrum/daily_scrum_04_task_completion.jpeg)
-
+![Final Task Completion Updates](../assets/daily_scrum/sprint3_daily_scrum_task_completion_updates.jpeg)
 ---
 
 ## General Notes
