@@ -1,38 +1,62 @@
 .app-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.1rem 2rem;
+  gap: 1.5rem;
+  padding: 0.95rem 2rem;
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
 }
 
 .app-header__brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  font-size: 1.25rem;
-  font-weight: 700;
+  gap: 0.55rem;
   color: var(--color-primary-dark);
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
 }
 
-.app-header__icon {
-  font-size: 1.5rem;
+.app-header__mark {
+  color: var(--color-primary);
+  transition: transform 0.25s ease;
+}
+
+.app-header__brand:hover .app-header__mark {
+  color: var(--color-primary-dark);
 }
 
 .app-header__nav {
   display: flex;
-  gap: 1.75rem;
+  gap: 1.6rem;
 }
 
 .app-header__nav a {
+  position: relative;
+  padding-bottom: 0.3rem;
   color: var(--color-text-muted);
-  text-decoration: none;
+  font-size: 0.93rem;
   font-weight: 600;
-  font-size: 0.95rem;
-  padding-bottom: 0.25rem;
-  border-bottom: 2px solid transparent;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.app-header__nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.18s ease;
 }
 
 .app-header__nav a:hover {
@@ -41,16 +65,31 @@
 
 .app-header__nav a.active {
   color: var(--color-primary-dark);
-  border-bottom-color: var(--color-primary);
+}
+
+.app-header__nav a.active::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .app-header__brand:hover .app-header__mark {
+    transform: rotate(45deg);
+  }
 }
 
 @media (max-width: 640px) {
   .app-header {
     flex-direction: column;
-    gap: 0.75rem;
-    padding: 1rem;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 0.85rem 1rem;
   }
+
   .app-header__nav {
-    gap: 1.25rem;
+    gap: 1.15rem;
+  }
+
+  .app-header__nav a {
+    font-size: 0.88rem;
   }
 }

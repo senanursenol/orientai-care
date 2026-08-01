@@ -1,8 +1,4 @@
-import { makeChatUseCase } from './chat.use-case.js'
-
 export function makeVoiceChatUseCase({ aiClient }) {
-  const chatUseCase = makeChatUseCase({ aiClient })
-
   return async function voiceChatUseCase({ patientId, audioBuffer, mimetype }) {
     if (!patientId) {
       throw new Error('patientId is required')
@@ -11,10 +7,9 @@ export function makeVoiceChatUseCase({ aiClient }) {
       throw new Error('audio file is required')
     }
 
-    const { transcript } = await aiClient.transcribeAudio(audioBuffer, mimetype)
-    const { answer, context } = await chatUseCase({ patientId, message: transcript })
-    const { audio_url: audioUrl } = await aiClient.synthesizeSpeech(answer)
+    // Python /api/chat/voice tek istekte STT + RAG + LLM + safety zincirini yapar.
+    const { transcript, answer, context } = await aiClient.transcribeAudio(audioBuffer, mimetype, patientId)
 
-    return { transcript, answer, context, audioUrl }
+    return { transcript, answer, context }
   }
 }

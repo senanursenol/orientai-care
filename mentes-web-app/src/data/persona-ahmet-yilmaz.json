@@ -1,0 +1,152 @@
+{
+  "patient_id": "P-1001",
+  "metadata": {
+    "full_name": "Ahmet Yılmaz",
+    "age": 74,
+    "gender": "male",
+    "diagnosis": "Early Stage Alzheimer",
+    "disease_stage": "mild",
+    "former_profession": "History Teacher",
+    "living_status": "Lives at home with family caregiver support",
+    "primary_caregiver": "Zeynep Yılmaz"
+  },
+  "orientation_support": {
+    "current_home": "Kadıköy, Istanbul",
+    "safe_place_reminder": "You are at home and you are safe.",
+    "reassurance_message": "Ahmet Bey, evdesiniz ve güvendesiniz. Kızınız Zeynep size yardımcı oluyor.",
+    "emergency_contact_name": "Zeynep Yılmaz",
+    "emergency_contact_relation": "Daughter"
+  },
+  "daily_routines": [
+    {
+      "time": "08:30",
+      "activity": "Morning medication",
+      "description": "Takes morning medication after breakfast.",
+      "reminder_type": "medication"
+    },
+    {
+      "time": "10:00",
+      "activity": "Tea and newspaper",
+      "description": "Likes drinking tea while reading the newspaper.",
+      "reminder_type": "activity"
+    },
+    {
+      "time": "14:00",
+      "activity": "Garden walk",
+      "description": "Takes a short walk in the garden when the weather is suitable.",
+      "reminder_type": "activity"
+    },
+    {
+      "time": "21:00",
+      "activity": "Evening medication",
+      "description": "Takes evening medication before going to bed.",
+      "reminder_type": "medication"
+    }
+  ],
+  "medications": [
+    {
+      "name": "Morning medication",
+      "time": "08:30",
+      "dose": "1 tablet",
+      "note": "Taken after breakfast."
+    },
+    {
+      "name": "Evening medication",
+      "time": "21:00",
+      "dose": "1 tablet",
+      "note": "Taken before sleep."
+    }
+  ],
+  "core_memories": [
+    {
+      "memory_id": "M-1001-FAMILY-01",
+      "category": "family",
+      "content": "His daughter is named Zeynep. She visits him every day and helps with his daily routine.",
+      "keywords": ["daughter", "Zeynep", "family", "caregiver"],
+      "emotional_tone": "calming"
+    },
+    {
+      "memory_id": "M-1001-FAMILY-02",
+      "category": "family",
+      "content": "His granddaughter is named Ayşe. He enjoys talking about Ayşe's school and achievements.",
+      "keywords": ["granddaughter", "Ayşe", "school", "family"],
+      "emotional_tone": "positive"
+    },
+    {
+      "memory_id": "M-1001-WORK-01",
+      "category": "work",
+      "content": "He worked as a history teacher at Ankara Atatürk High School for many years.",
+      "keywords": ["history teacher", "Ankara", "Atatürk High School", "work"],
+      "emotional_tone": "positive"
+    },
+    {
+      "memory_id": "M-1001-HOBBY-01",
+      "category": "hobby",
+      "content": "He enjoys reading history books and drinking tea in the morning.",
+      "keywords": ["history books", "tea", "morning", "hobby"],
+      "emotional_tone": "calming"
+    },
+    {
+      "memory_id": "M-1001-PLACE-01",
+      "category": "place",
+      "content": "He lives in Kadıköy, Istanbul, in a home where he feels safe and comfortable.",
+      "keywords": ["home", "Kadıköy", "Istanbul", "safe place"],
+      "emotional_tone": "calming"
+    }
+  ],
+  "family_members": [
+    {
+      "name": "Zeynep Yılmaz",
+      "relation": "Daughter",
+      "description": "Primary caregiver who visits and supports him every day."
+    },
+    {
+      "name": "Ayşe Yılmaz",
+      "relation": "Granddaughter",
+      "description": "His granddaughter, whom he likes to talk about."
+    }
+  ],
+  "communication_preferences": {
+    "preferred_language": "Turkish",
+    "tone": "Calm, patient and reassuring",
+    "answer_length": "short",
+    "avoid": [
+      "long explanations",
+      "complex instructions",
+      "medical diagnosis",
+      "arguing with the patient"
+    ]
+  },
+  "sample_questions": [
+    {
+      "question": "Ben neredeyim?",
+      "expected_answer_type": "orientation",
+      "expected_context_keywords": ["home", "Kadıköy", "safe"]
+    },
+    {
+      "question": "Kızımın adı neydi?",
+      "expected_answer_type": "family_recall",
+      "expected_context_keywords": ["Zeynep", "daughter"]
+    },
+    {
+      "question": "Torunumun adı neydi?",
+      "expected_answer_type": "family_recall",
+      "expected_context_keywords": ["Ayşe", "granddaughter"]
+    },
+    {
+      "question": "Ben nerede öğretmendim?",
+      "expected_answer_type": "memory_recall",
+      "expected_context_keywords": ["history teacher", "Ankara Atatürk High School"]
+    },
+    {
+      "question": "İlacımı aldım mı?",
+      "expected_answer_type": "medication_reminder",
+      "expected_context_keywords": ["morning medication", "evening medication"]
+    }
+  ],
+  "safety_notes": {
+    "medical_advice_policy": "The assistant must not provide diagnosis, treatment changes or medication dosage decisions.",
+    "hallucination_policy": "The assistant must only use the information available in this synthetic persona context.",
+    "emergency_policy": "If the user expresses danger, severe confusion or urgent medical symptoms, the assistant should recommend contacting the caregiver or emergency services."
+  }
+}

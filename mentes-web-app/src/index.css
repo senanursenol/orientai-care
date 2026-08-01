@@ -11,10 +11,43 @@
   --color-warning: #d9a441;
   --color-danger: #c0524a;
 
+  /* Duygu durumu etiketleri.
+     Küme ve isimler Python servisindeki SENTIMENT_LABELS ile birebir aynı:
+     services/mentes-ai-service/app/ai/sentiment/sentiment.py
+     Yeni renk icat etmiyoruz, mevcut semantik renklere bağlanıyoruz. */
+  --color-sentiment-positive: var(--color-success);
+  --color-sentiment-neutral: var(--color-primary);
+  --color-sentiment-negative: var(--color-danger);
+  --color-sentiment-anxious: var(--color-warning);
+
+  /* Etiket ve rozet zeminleri için açık karşılıklar. */
+  --color-sentiment-positive-soft: #e8f3e8;
+  --color-sentiment-neutral-soft: #e2f0ef;
+  --color-sentiment-negative-soft: #f7e9e8;
+  --color-sentiment-anxious-soft: #faf1e0;
+
+  /* Card.css'te sabit yazılı olan değerler token'a taşındı; yeni componentler
+     bunları kullanır, böylece kart geometrisi tek yerden değişir. */
+  --radius-card: 14px;
+  --radius-pill: 999px;
+  --shadow-card: 0 1px 3px rgba(20, 30, 40, 0.06);
+
+  /* Bir ara yüzey tonu: kart (beyaz) ile sayfa zemini arasında kalan,
+     bölüm içi zeminler için. */
+  --color-surface-sunken: #eef2f0;
+
   color-scheme: light;
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  /* Segoe UI Variable Windows 11'de bulunuyor ve Segoe UI'dan belirgin
+     biçimde daha okunaklı; yoksa sessizce eski sürüme düşüyor. Bu ürünün
+     kullanıcıları bilişsel güçlük yaşayan bireyler ve yaşlı bakım verenler,
+     okunaklılık burada estetik değil işlevsel bir gereklilik. */
+  font-family: 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system,
+    'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 * {
@@ -41,7 +74,15 @@ h1,
 h2,
 h3 {
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  /* Başlık satırlarını dengeler; tek kelime alta düşen çirkin ragging olmaz.
+     Desteklemeyen tarayıcıda sessizce yok sayılır. */
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 button {

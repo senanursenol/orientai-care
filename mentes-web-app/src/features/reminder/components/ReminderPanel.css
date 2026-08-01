@@ -1,0 +1,278 @@
+.reminder-panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.reminder-panel__heading {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.reminder-panel__title {
+  margin: 0;
+  color: var(--color-primary-dark);
+  font-size: 1.02rem;
+}
+
+.reminder-panel__count {
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+}
+
+.reminder-panel__add {
+  padding: 0.42rem 0.95rem;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-primary-dark);
+  font-size: 0.83rem;
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+
+.reminder-panel__add:hover {
+  background: var(--color-primary-light);
+}
+
+.reminder-panel__error {
+  margin: 0.9rem 0 0;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--color-danger);
+  border-radius: 10px;
+  background: var(--color-sentiment-negative-soft);
+  color: #8f3a34;
+  font-size: 0.85rem;
+}
+
+.reminder-panel__empty {
+  margin: 1.1rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+/* -------------------------------------------------------------------- form */
+
+.reminder-form {
+  margin-top: 1.05rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-background);
+}
+
+.reminder-form__row {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.reminder-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+  margin-bottom: 0.7rem;
+}
+
+.reminder-form__field--grow {
+  flex: 1;
+  min-width: 180px;
+}
+
+.reminder-form__label {
+  color: var(--color-text-muted);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.reminder-form input {
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 9px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 0.88rem;
+}
+
+.reminder-form input:hover {
+  border-color: var(--color-primary);
+}
+
+.reminder-form__error {
+  margin: 0 0 0.7rem;
+  color: var(--color-danger);
+  font-size: 0.82rem;
+}
+
+.reminder-form__actions {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.reminder-form__submit,
+.reminder-form__cancel {
+  padding: 0.44rem 1.05rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.reminder-form__submit {
+  border: 1px solid var(--color-primary-dark);
+  background: var(--color-primary-dark);
+  color: #ffffff;
+}
+
+.reminder-form__submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.reminder-form__cancel {
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+}
+
+.reminder-form__cancel:hover {
+  border-color: var(--color-text-muted);
+}
+
+.reminder-form__note {
+  margin: 0.8rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.79rem;
+  line-height: 1.5;
+}
+
+/* ------------------------------------------------------------------- liste */
+
+.reminder-panel__list {
+  margin: 1.05rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.reminder-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 11px;
+  background: var(--color-surface);
+}
+
+.reminder-row--inactive {
+  background: var(--color-background);
+}
+
+.reminder-row--inactive .reminder-row__title {
+  color: var(--color-text-muted);
+}
+
+.reminder-row__time {
+  flex: none;
+  width: 46px;
+  color: var(--color-text);
+  font-size: 0.88rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.reminder-row__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.reminder-row__title {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.reminder-row__desc {
+  margin: 0.12rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.81rem;
+}
+
+.reminder-row__status {
+  flex: none;
+  padding: 0.13rem 0.6rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-size: 0.71rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.reminder-row__status--active {
+  border-color: var(--color-success);
+  background: var(--color-sentiment-positive-soft);
+  color: #2c6b2f;
+}
+
+.reminder-row__status--inactive {
+  border-color: var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+}
+
+.reminder-row__actions {
+  flex: none;
+  display: flex;
+  gap: 0.35rem;
+}
+
+.reminder-row__actions button {
+  padding: 0.26rem 0.62rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.reminder-row__actions button:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  color: var(--color-primary-dark);
+}
+
+.reminder-row__actions button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.reminder-row__delete:hover:not(:disabled) {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+@media (max-width: 620px) {
+  .reminder-row {
+    flex-wrap: wrap;
+    gap: 0.4rem 0.7rem;
+  }
+
+  .reminder-row__body {
+    flex: 1 1 100%;
+    order: 3;
+  }
+
+  .reminder-row__actions {
+    order: 4;
+  }
+}

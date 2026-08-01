@@ -1,0 +1,47 @@
+.sentiment-badge {
+  display: inline-block;
+  flex: none;
+  padding: 0.16rem 0.62rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-size: 0.74rem;
+  font-weight: 700;
+  line-height: 1.45;
+  white-space: nowrap;
+}
+
+.sentiment-badge--small {
+  padding: 0.1rem 0.5rem;
+  font-size: 0.68rem;
+}
+
+.sentiment-badge--positive {
+  background: var(--color-sentiment-positive-soft);
+  border-color: var(--color-sentiment-positive);
+  color: #2c6b2f;
+}
+
+.sentiment-badge--neutral {
+  background: var(--color-sentiment-neutral-soft);
+  border-color: var(--color-sentiment-neutral);
+  color: var(--color-primary-dark);
+}
+
+.sentiment-badge--negative {
+  background: var(--color-sentiment-negative-soft);
+  border-color: var(--color-sentiment-negative);
+  color: #8f3a34;
+}
+
+.sentiment-badge--anxious {
+  background: var(--color-sentiment-anxious-soft);
+  border-color: var(--color-sentiment-anxious);
+  color: #8a6316;
+}
+
+.sentiment-badge--unknown {
+  background: var(--color-background);
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+  font-weight: 600;
+}

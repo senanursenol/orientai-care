@@ -1,27 +1,31 @@
 import { NavLink } from 'react-router-dom'
+import BrandMark from './BrandMark'
 import './Header.css'
 
 /**
  * Uygulama genelinde kullanılan üst navigasyon.
- * Hasta chat ve caregiver dashboard sayfaları eklendikçe
- * buraya yeni NavLink'ler eklenmesi yeterli.
+ *
+ * Header yapışkan (sticky): bakım veren paneli uzun bir sayfa, aşağı
+ * kaydırıldığında hasta ekranına geçmek için başa dönmek gerekmesin.
+ * Yeni sayfa eklendikçe buraya bir NavLink eklenmesi yeterli.
  */
 function Header() {
   return (
     <header className="app-header">
-      <div className="app-header__brand">
-        <span className="app-header__icon" aria-hidden="true">🧭</span>
+      <NavLink to="/" className="app-header__brand">
+        <BrandMark size={26} className="app-header__mark" />
         <span className="app-header__title">OrientAI</span>
-      </div>
-      <nav className="app-header__nav">
+      </NavLink>
+
+      <nav className="app-header__nav" aria-label="Ana gezinme">
         <NavLink to="/" end className={({ isActive }) => (isActive ? 'active' : '')}>
-          Ana Sayfa
+          Ana sayfa
         </NavLink>
         <NavLink to="/patient" className={({ isActive }) => (isActive ? 'active' : '')}>
-          Hasta Ekranı
+          Hasta ekranı
         </NavLink>
         <NavLink to="/caregiver" className={({ isActive }) => (isActive ? 'active' : '')}>
-          Bakım Veren Paneli
+          Bakım veren paneli
         </NavLink>
       </nav>
     </header>
