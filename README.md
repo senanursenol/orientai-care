@@ -660,53 +660,139 @@ Completed achievements:
 
 # Sprint 3 — Vision, Dashboard and Final Testing
 
+## Sprint Status
+
+Completed
+
+## Sprint Duration
+
+20 July 2026 - 30 July 2026
+
 ## Sprint Goal
 
-The goal of Sprint 3 is to complete visual understanding, image-based memory therapy, React caregiver dashboard, dual-agent simulation, hallucination testing, and final demo preparation.
+The goal of Sprint 3 was to complete the multimodal capabilities of OrientAI by integrating AI services, caregiver dashboard, patient interaction interface, visual understanding, simulation framework, safety validation and final project documentation. This sprint focused on bringing together all major system components into a functional end-to-end prototype ready for demonstration.
+
+---
 
 ## Sprint Backlog
 
 | Task | Status |
 |---|---|
-| LLaVA or Vision API integration | To Do |
-| Photo description module | To Do |
-| Image-based memory therapy flow | To Do |
-| Connecting visual analysis with RAG memory | To Do |
-| React caregiver dashboard | To Do |
-| React patient interaction screen | To Do |
-| Reminder management screen | To Do |
-| Sentiment charts on dashboard | To Do |
-| Conversation and routine logs on dashboard | To Do |
-| Dual-agent patient simulator | To Do |
-| Hallucination and safety testing | To Do |
-| Final demo scenario | To Do |
-| Sprint 3 product screenshots | To Do |
-| Sprint 3 review and retrospective notes | To Do |
-| Assistant agent evaluation flow | To Do |
+| Vision analysis service integration | Done |
+| Image-based memory therapy module | Done |
+| Caregiver dashboard implementation | Done |
+| Patient interaction interface | Done |
+| Routine and reminder management | Done |
+| Conversation monitoring panel | Done |
+| AI conversation integration | Done |
+| Patient simulation framework | Done |
+| Assistant evaluation module | Done |
+| Hallucination testing | Done |
+| Medical safety testing | Done |
+| Final demo scenario preparation | Done |
+| Sprint 3 product screenshots | Done |
+| Sprint 3 documentation | Done |
+
+---
 
 ## Sprint Board
 
 ![Sprint 3 Backlog](assets/sprint_boards/sprint_3_backlog.png)
 
-## Sprint Review
+---
 
-To be completed at the end of Sprint 3.
+# Product Status Screenshots
 
-## Sprint Retrospective
+Sprint 3 completed the end-to-end integration of OrientAI by combining patient interaction, caregiver monitoring, AI services, simulation, evaluation and safety testing into a unified prototype.
 
-To be completed at the end of Sprint 3.
+### Home Page
+
+![Home Page](assets/screenshots/sprint3/01_home_page.png)
+
+### Patient Assistant Interface
+
+![Patient Assistant](assets/screenshots/sprint3/02_patient_assistant.png)
+
+### Caregiver Dashboard Overview
+
+![Caregiver Dashboard](assets/screenshots/sprint3/03_caregiver_dashboard_overview.png)
+
+### Conversation Monitoring
+
+![Conversation Monitoring](assets/screenshots/sprint3/04_conversation_monitoring.png)
+
+### Routine & Reminder Management
+
+![Routine Management](assets/screenshots/sprint3/05_routine_and_reminders.png)
+
+### Patient Simulation
+
+![Patient Simulation](assets/screenshots/sprint3/06_patient_simulation.png)
+
+### Assistant Evaluation
+
+![Assistant Evaluation](assets/screenshots/sprint3/07_assistant_evaluation.png)
+
+### Safety & Hallucination Tests
+
+![Safety Tests](assets/screenshots/sprint3/08_safety_tests.png)
 
 ---
 
-## 📸 Screenshots
+# Sprint 3 Review
 
-```text
-assets/
-└── sprint_boards/
-    ├── sprint_1_backlog.png
-    ├── sprint_2_backlog.png
-    └── sprint_3_backlog.png
-```
+Sprint 3 focused on completing the integration of all core modules developed throughout the project. The patient assistant, caregiver dashboard, AI conversation pipeline, simulation framework and evaluation system were successfully integrated into a single workflow.
+
+During this sprint, visual analysis capabilities, memory-supported conversations, synthetic patient simulations and safety validation scenarios were finalized. Hallucination prevention, privacy protection and medical safety behaviours were evaluated through dedicated test scenarios. The project documentation, demo scenario and product screenshots were also completed to support the final presentation.
+
+Completed achievements:
+
+- AI conversation pipeline completed.
+- Caregiver dashboard finalized.
+- Patient interaction interface completed.
+- Simulation and evaluation framework implemented.
+- Hallucination and safety testing completed.
+- Final demo scenario prepared.
+- Product screenshots and documentation finalized.
+
+---
+
+# Sprint 3 Retrospective
+
+### What Went Well
+
+- AI services were successfully integrated with the backend architecture.
+- Simulation and evaluation modules provided realistic validation of assistant behaviour.
+- Caregiver dashboard and patient interface reached a functional prototype stage.
+- Safety-oriented prompting reduced hallucination and unsafe responses.
+- Team collaboration remained effective during final integration and testing.
+
+### What Could Be Improved
+
+- Environment configuration and API key management should be standardized earlier.
+- Integration testing between frontend and backend should begin earlier in the sprint.
+- Shared development environments could be synchronized more consistently.
+
+### Challenges
+
+- End-to-end integration between React, Node.js and Python AI services required additional debugging.
+- API configuration and service communication caused temporary integration issues.
+- Final testing required multiple validation cycles across different modules.
+
+### Action Items
+
+- Improve automated integration testing.
+- Expand simulation scenarios.
+- Increase safety test coverage.
+- Improve logging and monitoring across AI services.
+- Continue optimizing system performance.
+
+---
+
+# Sprint 3 Documentation
+
+- [Sprint 3 Daily Scrum Notes](docs/sprint_3_daily_scrum.md)
+- [Sprint 3 Review and Retrospective](docs/sprint_3_review_retrospective.md)
 
 ---
 
@@ -721,7 +807,7 @@ All patient profiles, memories, routines, and conversations are synthetically ge
 ## 📍 Project Status
 
 ```text
-Current Stage: Sprint 1 Completed — Sprint 2 Preparation
+Current Stage: Sprint 3 Completed — Final Project Delivery
 ```
 
 ---

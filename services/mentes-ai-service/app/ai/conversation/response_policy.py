@@ -27,6 +27,9 @@ class ResponsePolicyBuilder:
         emotional_state: str,
         needs_attention: bool,
     ) -> ResponsePolicy:
+
+        emotional_state = emotional_state.lower()
+
         if needs_attention:
             return ResponsePolicy(
                 tone="calm_and_direct",
@@ -35,6 +38,7 @@ class ResponsePolicyBuilder:
                 ask_at_most_one_question=True,
                 avoid_confrontation=True,
             )
+
         if emotional_state == "anxious":
             return ResponsePolicy(
                 tone="calm_and_reassuring",
@@ -43,6 +47,34 @@ class ResponsePolicyBuilder:
                 ask_at_most_one_question=True,
                 avoid_confrontation=True,
             )
+
+        if emotional_state == "confused":
+            return ResponsePolicy(
+                tone="calm_and_clear",
+                length="very_short",
+                acknowledge_feeling=True,
+                ask_at_most_one_question=True,
+                avoid_confrontation=True,
+            )
+
+        if emotional_state == "forgetful":
+            return ResponsePolicy(
+                tone="gentle_and_supportive",
+                length="short",
+                acknowledge_feeling=False,
+                ask_at_most_one_question=True,
+                avoid_confrontation=True,
+            )
+
+        if emotional_state == "calm":
+            return ResponsePolicy(
+                tone="warm_and_natural",
+                length="short",
+                acknowledge_feeling=False,
+                ask_at_most_one_question=True,
+                avoid_confrontation=True,
+            )
+
         if emotional_state == "negative":
             return ResponsePolicy(
                 tone="empathetic_and_supportive",
@@ -51,6 +83,7 @@ class ResponsePolicyBuilder:
                 ask_at_most_one_question=True,
                 avoid_confrontation=True,
             )
+
         if emotional_state == "positive":
             return ResponsePolicy(
                 tone="warm_and_encouraging",
@@ -59,6 +92,7 @@ class ResponsePolicyBuilder:
                 ask_at_most_one_question=True,
                 avoid_confrontation=True,
             )
+
         return ResponsePolicy(
             tone="calm_and_clear",
             length="short",
@@ -68,18 +102,24 @@ class ResponsePolicyBuilder:
         )
 
     def build(self, sentiment: dict[str, Any]) -> LLMContext:
-        """Return the exact structured context consumed by ``LLMService``."""
+        """
+        Existing assistant pipeline.
+        Converts sentiment analysis into LLMContext.
+        """
 
         emotional_state = str(sentiment.get("label") or "unknown").strip()
+
         try:
             score = float(sentiment.get("score") or 0.0)
         except (TypeError, ValueError):
             score = 0.0
+
         low_confidence = bool(sentiment.get("low_confidence", True))
 
         safety_data = sentiment.get("safety")
         if not isinstance(safety_data, dict):
             safety_data = {}
+
         needs_attention = bool(
             safety_data.get(
                 "needs_attention",
@@ -94,11 +134,40 @@ class ResponsePolicyBuilder:
                 emotional_state,
                 needs_attention,
             ),
-            safety=SafetyContext(needs_attention=needs_attention),
+            safety=SafetyContext(
+                needs_attention=needs_attention,
+            ),
+        )
+
+    def build_patient_context(
+        self,
+        emotional_state: str,
+    ) -> LLMContext:
+        """
+        ORI-37
+        Creates an LLMContext directly from the synthetic patient's
+        emotional state without running sentiment analysis.
+        """
+
+        emotional_state = emotional_state.lower()
+
+        return LLMContext(
+            emotional_state=emotional_state,
+            confidence="high",
+            response_policy=self._policy_for(
+                emotional_state,
+                False,
+            ),
+            safety=SafetyContext(
+                needs_attention=False,
+            ),
         )
 
 
 response_policy_builder = ResponsePolicyBuilder()
 
 
-__all__ = ["ResponsePolicyBuilder", "response_policy_builder"]
+__all__ = [
+    "ResponsePolicyBuilder",
+    "response_policy_builder",
+]

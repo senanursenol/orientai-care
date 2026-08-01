@@ -26,7 +26,15 @@ chatRouter.post('/chat', async (req, res) => {
       inputType: 'text',
     }).catch((error) => console.error('[interaction-log] failed:', error.message))
   } catch (error) {
-    const isValidationError = /required/.test(error.message)
-    res.status(isValidationError ? 400 : 502).json({ status: 'error', message: error.message })
-  }
+  console.error("========== CHAT ERROR ==========");
+  console.error(error);
+
+  const isValidationError = /required/.test(error.message);
+
+  res.status(isValidationError ? 400 : 502).json({
+    status: "error",
+    message: error.message,
+    stack: error.stack,
+  });
+}
 })

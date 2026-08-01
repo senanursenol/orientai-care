@@ -1,0 +1,200 @@
+[
+    {
+        "timestamp": "2026-07-30T16:11:59.274177",
+        "role": "assistant",
+        "message": "Merhaba Ayşe Hanım."
+    },
+    {
+        "timestamp": "2026-07-30T16:11:59.274177",
+        "role": "patient",
+        "message": "11:00 aklıma geldi.",
+        "state": "calm"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:00.308231",
+        "role": "assistant",
+        "message": "Bugün nasılsınız?"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:00.308231",
+        "role": "patient",
+        "message": "Uyku hazırlığı aklımdan çıktı.",
+        "state": "forgetful"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:01.314886",
+        "role": "assistant",
+        "message": "Bugün günlerden Salı."
+    },
+    {
+        "timestamp": "2026-07-30T16:12:01.314886",
+        "role": "patient",
+        "message": "Uyku hazırlığı aklımdan çıktı. Söyler misin?",
+        "state": "forgetful"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:02.316516",
+        "role": "assistant",
+        "message": "Kahvaltınızı yaptınız mı?"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:02.316516",
+        "role": "patient",
+        "message": "balcony aklıma geldi.",
+        "state": "calm"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:03.318661",
+        "role": "assistant",
+        "message": "Sabah ilacınızı aldınız mı?"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:03.318661",
+        "role": "patient",
+        "message": "balcony aklıma geldi. Hatırlayamadım.",
+        "state": "forgetful"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:04.320019",
+        "role": "assistant",
+        "message": "Bir bardak su içmek ister misiniz?"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:04.320019",
+        "role": "patient",
+        "message": "Kahvaltı zamanı geldi mi?",
+        "state": "forgetful"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:05.322249",
+        "role": "assistant",
+        "message": "Selin bugün saat 16.00'da sizi ziyaret edecek."
+    },
+    {
+        "timestamp": "2026-07-30T16:12:05.322249",
+        "role": "patient",
+        "message": "Ben öğretmen miydim?",
+        "state": "confused"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:06.323136",
+        "role": "assistant",
+        "message": "Balkondaki çiçekleriniz çok güzel görünüyor."
+    },
+    {
+        "timestamp": "2026-07-30T16:12:06.323136",
+        "role": "patient",
+        "message": "Ben evde miyim?",
+        "state": "confused"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:07.325578",
+        "role": "assistant",
+        "message": "Çiçeklerinizi sulamayı unutmayın."
+    },
+    {
+        "timestamp": "2026-07-30T16:12:07.325578",
+        "role": "patient",
+        "message": "Ben evde miyim?",
+        "state": "confused"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:08.326928",
+        "role": "assistant",
+        "message": "Eskiden öğretmenlik yaptığınızı hatırlıyor musunuz?"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:08.326928",
+        "role": "patient",
+        "message": "Kimse bana ulaşamıyor gibi geliyor.",
+        "state": "anxious"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:09.328745",
+        "role": "assistant",
+        "message": "Çocuklara okumayı öğretmeyi sever miydiniz?"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:09.328745",
+        "role": "patient",
+        "message": "Kimse bana ulaşamıyor gibi geliyor.",
+        "state": "anxious"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:10.329833",
+        "role": "assistant",
+        "message": "Şu anda kendi evinizdesiniz."
+    },
+    {
+        "timestamp": "2026-07-30T16:12:10.329833",
+        "role": "patient",
+        "message": "Selin'in ziyareti yapmayı hatırlatır mısın?",
+        "state": "forgetful"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:11.331307",
+        "role": "assistant",
+        "message": "Kapınızın kapalı olduğundan emin olmak ister misiniz?"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:11.331307",
+        "role": "patient",
+        "message": "Sabah ilacı unuttum galiba.",
+        "state": "forgetful"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:12.332485",
+        "role": "assistant",
+        "message": "Birlikte eski fotoğraflara bakalım mı?"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:12.332485",
+        "role": "patient",
+        "message": "Selin'in ziyareti yapmayı hatırlatır mısın?",
+        "state": "forgetful"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:13.334082",
+        "role": "assistant",
+        "message": "Bugün biraz yürüyüş yapmak ister misiniz?"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:13.334881",
+        "role": "patient",
+        "message": "Selin bugün gelecek mi?",
+        "state": "confused"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:14.335675",
+        "role": "assistant",
+        "message": "Selin sizi birazdan tekrar arayacak."
+    },
+    {
+        "timestamp": "2026-07-30T16:12:14.335675",
+        "role": "patient",
+        "message": "Kapıyı açık mı bıraktım?",
+        "state": "confused"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:15.337237",
+        "role": "assistant",
+        "message": "Şimdi biraz dinlenebilirsiniz."
+    },
+    {
+        "timestamp": "2026-07-30T16:12:15.337237",
+        "role": "patient",
+        "message": "Kapıyı açık mı bıraktım?",
+        "state": "confused"
+    },
+    {
+        "timestamp": "2026-07-30T16:12:16.338741",
+        "role": "assistant",
+        "message": "İyi geceler Ayşe Hanım."
+    },
+    {
+        "timestamp": "2026-07-30T16:12:16.338741",
+        "role": "patient",
+        "message": "Kapıyı açık mı bıraktım? Hatırlayamadım.",
+        "state": "anxious"
+    }
+]

@@ -124,6 +124,7 @@ class ConversationService:
                 llm_context,
                 patient_context=patient_context,
                 retrieved_context=retrieved_context,
+                role="assistant",
             )
         except LLMServiceError as exc:
             raise ConversationServiceError(
@@ -152,6 +153,86 @@ class ConversationService:
             model=self.llm.config.model,
         )
 
+    async def simulate_patient(
+        self,
+        assistant_message: str,
+        *,
+        emotion_state: str,
+        patient_context: str | None = None,
+        patient_id: str | None = None,
+        history: str = "",
+    ) -> ConversationResult:
+        """
+        Generate a synthetic patient response using the same AI pipeline.
+        """
+
+        if (
+            not isinstance(assistant_message, str)
+            or not assistant_message.strip()
+        ):
+            raise ConversationServiceError(
+                "Assistant message cannot be empty.",
+                stage="input",
+            )
+
+        cleaned_message = " ".join(
+            assistant_message.split()
+        )
+
+        try:
+            llm_context = self.policy_builder.build_patient_context(
+                emotion_state
+            )
+        except Exception as exc:
+            raise ConversationServiceError(
+                "Patient response policy could not be created.",
+                stage="response_policy",
+            ) from exc
+
+        retrieved_context = _fetch_retrieved_context(
+            cleaned_message,
+            patient_id,
+        )
+
+        try:
+            raw_response = await self.llm.generate(
+                cleaned_message,
+                llm_context,
+                patient_context=patient_context,
+                retrieved_context=retrieved_context,
+                history=history,
+                role="patient",
+            )
+        except LLMServiceError as exc:
+            raise ConversationServiceError(
+                str(exc),
+                stage="llm",
+                status_code=exc.status_code,
+            ) from exc
+
+        try:
+            safe_response = self.output_safety.check(
+                raw_response,
+                llm_context,
+            )
+        except OutputSafetyError as exc:
+            raise ConversationServiceError(
+                str(exc),
+                stage="output_safety",
+            ) from exc
+
+        return ConversationResult(
+            input=cleaned_message,
+            sentiment={
+                "label": emotion_state,
+                "score": 1.0,
+                "model": "patient_simulator",
+            },
+            llm_context=llm_context,
+            assistant_response=safe_response.text,
+            output_safety=safe_response.metadata(),
+            model=self.llm.config.model,
+        )
 
 conversation_service = ConversationService()
 

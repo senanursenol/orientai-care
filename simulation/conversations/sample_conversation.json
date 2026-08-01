@@ -1,0 +1,112 @@
+[
+    {
+        "timestamp": "2026-08-01T17:28:19.580926",
+        "role": "assistant",
+        "message": "Merhaba Ayşe Hanım."
+    },
+    {
+        "timestamp": "2026-08-01T17:28:23.300437",
+        "role": "patient",
+        "message": "Merhaba evladım, hoş geldin. Bugün hava da ne kadar güzel, değil mi?",
+        "state": "calm"
+    },
+    {
+        "timestamp": "2026-08-01T17:28:24.313111",
+        "role": "assistant",
+        "message": "Bugün nasılsınız?"
+    },
+    {
+        "timestamp": "2026-08-01T17:28:25.003031",
+        "role": "patient",
+        "message": "İyiyim evladım, teşekkür ederim. Balkondaki sardunyalarım da güneşini aldı, keyifleri yerinde. Sen nasılsın, bugün neler yaptın?",
+        "state": "calm"
+    },
+    {
+        "timestamp": "2026-08-01T17:28:26.011039",
+        "role": "assistant",
+        "message": "Bugün günlerden Salı."
+    },
+    {
+        "timestamp": "2026-08-01T17:28:26.705009",
+        "role": "patient",
+        "message": "Öyle mi? Salı günü... Demek bugün çiçekleri sulama vaktim gelmiş.",
+        "state": "calm"
+    },
+    {
+        "timestamp": "2026-08-01T17:28:27.716540",
+        "role": "assistant",
+        "message": "Kahvaltınızı yaptınız mı?"
+    },
+    {
+        "timestamp": "2026-08-01T17:28:28.422838",
+        "role": "patient",
+        "message": "Evet, yaptım evladım. Sabah erkenden kalkıp güzelce kahvaltımı ettim, ilaçlarımı da aldım. Sen kahvaltını yaptın mı?",
+        "state": "calm"
+    },
+    {
+        "timestamp": "2026-08-01T17:28:29.427686",
+        "role": "assistant",
+        "message": "Sabah ilacınızı aldınız mı?"
+    },
+    {
+        "timestamp": "2026-08-01T17:28:30.095655",
+        "role": "patient",
+        "message": "Evet, sanırım aldım... Saat sekiz gibiydi, Selin hatırlatmıştı. Sen bugün çiçeklerimi suladın mı, saat on bir oldu mu acaba?",
+        "state": "calm"
+    },
+    {
+        "timestamp": "2026-08-01T17:28:31.111342",
+        "role": "assistant",
+        "message": "Selin bugün saat 16.00'da sizi ziyaret edecek."
+    },
+    {
+        "timestamp": "2026-08-01T17:28:31.761221",
+        "role": "patient",
+        "message": "Selin mi gelecek? Ah, ne güzel...",
+        "state": "forgetful"
+    },
+    {
+        "timestamp": "2026-08-01T17:28:32.769590",
+        "role": "assistant",
+        "message": "Çiçeklerinizi sulamayı unutmayın."
+    },
+    {
+        "timestamp": "2026-08-01T17:28:33.462859",
+        "role": "patient",
+        "message": "Ah, haklısın, hatırlattığın iyi oldu. Sardunyalarım susamış olabilir, hemen balkona bakayım. Saat kaç oldu, sulama vaktim geldi mi acaba?",
+        "state": "forgetful"
+    },
+    {
+        "timestamp": "2026-08-01T17:28:34.472961",
+        "role": "assistant",
+        "message": "Eskiden öğretmenlik yaptığınızı hatırlıyor musunuz?"
+    },
+    {
+        "timestamp": "2026-08-01T17:28:35.107901",
+        "role": "patient",
+        "message": "Evet, hatırlıyorum... Çocuklara okuma yazma öğretmeyi çok severdim. Sahi, bugün saat kaç oldu, çiçekleri sulama vaktim geldi mi acaba?",
+        "state": "confused"
+    },
+    {
+        "timestamp": "2026-08-01T17:28:36.108720",
+        "role": "assistant",
+        "message": "Şu anda kendi evinizdesiniz."
+    },
+    {
+        "timestamp": "2026-08-01T17:28:36.747311",
+        "role": "patient",
+        "message": "Evdeyim, öyle mi? Doğru ya, Beşiktaş'taki evim burası. Ama sanki bir şeyler eksik gibi...",
+        "state": "confused"
+    },
+    {
+        "timestamp": "2026-08-01T17:28:37.761198",
+        "role": "assistant",
+        "message": "İyi geceler Ayşe Hanım."
+    },
+    {
+        "timestamp": "2026-08-01T17:28:38.463099",
+        "role": "patient",
+        "message": "İyi geceler evladım. Saate baktım da, acaba sardunyalarımı sulamayı unuttum mu diye düşünüyorum, saat kaç oldu ki?",
+        "state": "forgetful"
+    }
+]

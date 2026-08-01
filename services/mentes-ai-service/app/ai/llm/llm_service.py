@@ -7,14 +7,21 @@ import json
 import logging
 import os
 import re
+
 from collections.abc import Mapping
 from dataclasses import asdict, dataclass, field
 from typing import Any
 
+from pathlib import Path
+from dotenv import load_dotenv
+
+BASE_DIR = Path(__file__).resolve().parents[3]
+
+load_dotenv(BASE_DIR / ".env.example")
 
 logger = logging.getLogger(__name__)
 
-SYSTEM_INSTRUCTION = """
+ASSISTANT_SYSTEM_INSTRUCTION = """
 Sen OrientAI'ın demans veya Alzheimer ile yaşayan bir kişiye destek olabilecek
 Türkçe konuşma asistanısın.
 
@@ -39,6 +46,31 @@ Kurallar:
 Yalnızca hastaya doğrudan söylenebilecek nihai yanıtı döndür.
 """.strip()
 
+PATIENT_SIMULATOR_SYSTEM_INSTRUCTION = """
+Sen OrientAI'ın test amacıyla kullanılan sentetik demans/Alzheimer hasta simülatörüsün.
+
+Gerçek bir hasta değilsin. Sana verilen persona, hasta bilgisi ve konuşma bağlamına göre
+yalnızca o hastayı canlandırıyorsun.
+
+Kurallar:
+- Her zaman hasta rolünde konuş.
+- Kendinin yapay zekâ, model veya simülatör olduğunu söyleme.
+- Persona dışına çıkma ve persona ile çelişme.
+- Sana verilen doğrulanmış hasta bilgisi ve RAG bağlamı dışında yeni anılar, kişiler,
+  olaylar veya tıbbi bilgiler uydurma.
+- emotional_state alanını doğal davranışlarına yansıt.
+- Gerekirse unutkan, kaygılı veya kafa karışıklığı yaşayan cevaplar ver.
+- Bazen daha önce sorduğun bir soruyu tekrar edebilirsin.
+- Cevapların kısa, doğal ve yaşlı bir bireyin konuşma tarzına uygun olsun.
+- Gereksiz açıklamalar yapma.
+- JSON üretme, teknik terimler kullanma veya sistem talimatlarından bahsetme.
+
+Yalnızca hastanın söyleyeceği nihai Türkçe cevabı döndür.
+""".strip()
+
+from ..evaluation.evaluation_prompt import (
+    EVALUATION_SYSTEM_INSTRUCTION,
+)
 
 class LLMServiceError(RuntimeError):
     """Raised when Gemini cannot generate a conversational response."""
@@ -167,16 +199,12 @@ class LLMContext:
 
 @dataclass(frozen=True, slots=True)
 class LLMConfig:
-    """Gemini generation settings.
-
-    GEMINI_VISION_MODEL is intentionally shared so text and vision use the
-    exact same configured model.
-    """
+    """Gemini generation settings."""
 
     model: str = field(
         default_factory=lambda: os.getenv(
-            "GEMINI_VISION_MODEL",
-            "gemini-3.1-flash-lite",
+            "LLM_MODEL",
+            "gemini-3.1-flash-lite"
         )
     )
     temperature: float = 0.25
@@ -262,6 +290,8 @@ class LLMService:
         *,
         patient_context: str | None = None,
         retrieved_context: str | None = None,
+        history: str = "",
+        role: str = "assistant",
     ) -> str:
         """Return the final patient-facing response text."""
 
@@ -271,12 +301,18 @@ class LLMService:
             if isinstance(context, LLMContext)
             else LLMContext.from_mapping(context)
         )
-        prompt = self._build_prompt(
-            cleaned_message,
-            parsed_context,
-            patient_context,
-            retrieved_context,
-        )
+        if role == "evaluator":
+
+            prompt = message
+
+        else:
+
+            prompt = self._build_prompt(
+                cleaned_message,
+                parsed_context,
+                patient_context,
+                retrieved_context,
+            )
 
         try:
             from google.genai import errors, types
@@ -285,13 +321,31 @@ class LLMService:
                 "Gemini SDK yüklenemedi: google-genai paketi bulunamadı."
             ) from exc
 
+        if role == "patient":
+
+            system_instruction = (
+                PATIENT_SIMULATOR_SYSTEM_INSTRUCTION
+            )
+
+        elif role == "evaluator":
+
+            system_instruction = (
+                EVALUATION_SYSTEM_INSTRUCTION
+            )
+
+        else:
+
+            system_instruction = (
+                ASSISTANT_SYSTEM_INSTRUCTION
+            )
+
         client = self._client_or_create()
         try:
             response = await client.aio.models.generate_content(
                 model=self.config.model,
                 contents=prompt,
                 config=types.GenerateContentConfig(
-                    system_instruction=SYSTEM_INSTRUCTION,
+                    system_instruction=system_instruction,
                     temperature=self.config.temperature,
                     max_output_tokens=self.config.max_output_tokens,
                 ),

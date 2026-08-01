@@ -1,4 +1,5 @@
 import os
+import json
 
 
 PROMPT_DIR = os.path.abspath(
@@ -65,4 +66,36 @@ def build_image_memory_prompt(context, image_description, question):
         context=context,
         image_description=image_description,
         question=question
+    )
+
+
+def build_patient_simulator_prompt(
+    persona,
+    emotion_state,
+    assistant_message,
+    history=""
+):
+    """
+    Synthetic patient simulation prompt.
+    """
+
+    template = load_prompt(
+        "patient_simulator_prompt.txt"
+    )
+
+    if isinstance(persona, dict):
+        persona = json.dumps(
+            persona,
+            indent=2,
+            ensure_ascii=False
+        )
+
+    if not history:
+        history = "No previous conversation."
+
+    return template.format(
+        persona=persona,
+        emotion_state=emotion_state,
+        history=history,
+        message=assistant_message
     )
